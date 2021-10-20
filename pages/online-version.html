@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>VPEG</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <h1>VPEG</h1>
+      <h2>PEG Visualizator</h2>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="../pages/home.html">Home</a></li>
+        <li><a href="../pages/online-version.html">Online Version</a></li>
+        <li><a href="../pages/documentation.html">Documentation</a></li>
+        <li><a href="../pages/development.html">Development</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <table class="columns">
+        <thead>
+          <tr>
+            <th><spam class="number">1</spam>Write your PEG grammar</th>
+            <th>
+              <spam class="number">2</spam>Test the generated parser with some input</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr>
+            <td class="text-box">
+              <form action="">
+                <label for="writepeg"></label>
+                <textarea class="text-area-left">// Simple Arithmetics Grammar
+// ==========================
+//
+// Accepts expressions like "2 * (3 + 4)" and computes their value.
+
+Expression
+  = head:Term tail:(_ ("+" / "-") _ Term)* {
+      return tail.reduce(function(result, element) {
+        if (element[1] === "+") { return result + element[3]; }
+        if (element[1] === "-") { return result - element[3]; }
+      }, head);
+    }
+
+Term
+  = head:Factor tail:(_ ("*" / "/") _ Factor)* {
+      return tail.reduce(function(result, element) {
+        if (element[1] === "*") { return result * element[3]; }
+        if (element[1] === "/") { return result / element[3]; }
+      }, head);
+    }
+
+Factor
+  = "(" _ expr:Expression _ ")" { return expr; }
+  / Integer
+
+Integer "integer"
+  = _ [0-9]+ { return parseInt(text(), 10); }
+
+_ "whitespace"
+  = [ \t\n\r]*
+                  </textarea>
+                <form action="../pages/saida-debug.html">
+                                    
+                </form>
+                <br>
+                <a href="../pages/output-debug.html">
+                  <button onclick="">Debug</button>
+                </a>
+          
+            </td>
+            <td class="text-box">
+              <form action="">
+                <label for="testparser"></label>
+                <textarea class="text-area-rigth"> 2 * (3 + 4)</textarea>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

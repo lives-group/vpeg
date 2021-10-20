@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>VPEG</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <h1>VPEG</h1>
+      <h2>PEG Visualizator</h2>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="../pages/home.html">Home</a></li>
+        <li><a href="../pages/online-version.html">Online Version</a></li>
+        <li><a href="../pages/documentation.html">Documentation</a></li>
+        <li><a href="../pages/development.html">Development</a></li>
+      </ul>
+    </nav>
+    
+    <br /> <br /> <br /> <br />
+
+    <main>
+      <div class="grid-container">
+        <div class="item1">
+          1
+          <strong>Code</strong>
+          <br />
+          <button>Start</button>
+          <button>Pause</button>
+          <button>Step Over</button>
+          <button>Step Into</button>
+          <button>Step Out</button>
+          <ol>
+            <li><code><pre>Expression</pre></code></li>
+            <li><code><pre>  = head:Term tail:(_ ("+" / "-") _ Term)* {</pre></code></li>
+            <li><code><pre>      return tail.reduce(function(result, element) {</pre></code></li>
+            <li><code><pre>        if (element[1] === "+") { return result + element[3]; }</pre></code></li>
+            <li><code><pre>        if (element[1] === "-") { return result - element[3]; }</pre></code></li>
+            <li><code><pre>      }, head);</pre></code></li>
+            <li><code><pre>    }</pre></code></li>
+            <li><code><pre></pre></code></li>
+            <li><code><pre>Term</pre></code></li>
+            <li><code><pre>  = head:Factor tail:(_ ("*" / "/") _ Factor)* {</pre></code></li>
+            <li><code><pre>      return tail.reduce(function(result, element) {</pre></code></li>
+            <li><code><pre>        if (element[1] === "*") { return result * element[3]; }</pre></code></li>
+            <li><code><pre>        if (element[1] === "/") { return result / element[3]; }</pre></code></li>
+            <li><code><pre>      }, head);</pre></code></li>
+            <li><code><pre>    }</pre></code></li>
+            <li><code><pre></pre></code></li>
+            <li><code><pre></pre></code></li>
+            <li><code><pre></pre></code></li>
+            <li><code><pre></pre></code></li>
+            <li><code><pre></pre></code></li>
+            <li><code><pre></pre></code></li>
+          </ol>
+        </div>
+        <div class="item2">
+          2
+          <table class="tg" id="iterativeTable">
+            <thead>
+              <strong>Input</strong>
+            </thead>
+            <br /> <br />
+            <tbody>
+              <tr>
+                <td class="tg-0lax" style="color: yellow">p</td>
+                <td class="tg-0lax">a</td>
+                <td class="tg-0lax">l</td>
+                <td class="tg-0lax">a</td>
+                <td class="tg-0lax">v</td>
+                <td class="tg-0lax">r</td>
+                <td class="tg-0lax">a</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">^</td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+              </tr>
+            </tbody>
+          </table>
+          <button onclick="previousStep()">Previous</button>
+          <button onclick="nextStep()">Next</button>
+        </div>
+        <div class="item3">
+          3
+          <strong>Debug Status</strong><br/>
+          <br />
+          <textarea readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
+        </div>
+        <div class="item4">
+          4
+          <strong>Debug Tree</strong><br/>
+          (todo: tree)
+          <br /> <br />
+          <img src="../arv.jpg" alt="Tree" />
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function previousStep() {
+        var x = document.getElementById("iterativeTable").rows[1].cells;
+        var y = document.getElementById("iterativeTable").rows[0].cells;
+
+        var i = 0;
+        while (x[i].innerHTML != "^") {
+          i++;
+        }
+        x[i].innerHTML = "";
+        x[i - 1].innerHTML = "^";
+
+        var y = document.getElementById("iterativeTable").rows[0].cells;
+        y[i].setAttribute("style", "color:black;");
+        y[i - 1].setAttribute("style", "color:yellow;");
+      }
+
+      function nextStep() {
+        var x = document.getElementById("iterativeTable").rows[1].cells;
+        var i = 0;
+
+        while (x[i].innerHTML != "^") {
+          i++;
+        }
+        x[i].innerHTML = "";
+        x[i + 1].innerHTML = "^";
+
+        var y = document.getElementById("iterativeTable").rows[0].cells;
+        y[i + 1].setAttribute("style", "color:yellow;");
+        y[i].setAttribute("style", "color:green;");
+      }
+    </script>
+  </body>
+</html>
