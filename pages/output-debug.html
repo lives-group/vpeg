@@ -23,8 +23,11 @@
         <li><a href="../pages/development.html">Development</a></li>
       </ul>
     </nav>
-    
-    <br /> <br /> <br /> <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
 
     <main>
       <div class="grid-container">
@@ -37,28 +40,29 @@
           <button>Step Over</button>
           <button>Step Into</button>
           <button>Step Out</button>
-          <ol>
-            <li><code><pre>Expression</pre></code></li>
-            <li><code><pre>  = head:Term tail:(_ ("+" / "-") _ Term)* {</pre></code></li>
-            <li><code><pre>      return tail.reduce(function(result, element) {</pre></code></li>
-            <li><code><pre>        if (element[1] === "+") { return result + element[3]; }</pre></code></li>
-            <li><code><pre>        if (element[1] === "-") { return result - element[3]; }</pre></code></li>
-            <li><code><pre>      }, head);</pre></code></li>
-            <li><code><pre>    }</pre></code></li>
-            <li><code><pre></pre></code></li>
-            <li><code><pre>Term</pre></code></li>
-            <li><code><pre>  = head:Factor tail:(_ ("*" / "/") _ Factor)* {</pre></code></li>
-            <li><code><pre>      return tail.reduce(function(result, element) {</pre></code></li>
-            <li><code><pre>        if (element[1] === "*") { return result * element[3]; }</pre></code></li>
-            <li><code><pre>        if (element[1] === "/") { return result / element[3]; }</pre></code></li>
-            <li><code><pre>      }, head);</pre></code></li>
-            <li><code><pre>    }</pre></code></li>
-            <li><code><pre></pre></code></li>
-            <li><code><pre></pre></code></li>
-            <li><code><pre></pre></code></li>
-            <li><code><pre></pre></code></li>
-            <li><code><pre></pre></code></li>
-            <li><code><pre></pre></code></li>
+          <ol id="code">
+            <li>
+              <code><pre>A = 'a' A 'a' / lambda</pre></code>
+            </li>
+
+            <li>
+              <code><pre></pre></code>
+            </li>
+            <li>
+              <code><pre></pre></code>
+            </li>
+            <li>
+              <code><pre></pre></code>
+            </li>
+            <li>
+              <code><pre></pre></code>
+            </li>
+            <li>
+              <code><pre></pre></code>
+            </li>
+            <li>
+              <code><pre></pre></code>
+            </li>
           </ol>
         </div>
         <div class="item2">
@@ -67,20 +71,19 @@
             <thead>
               <strong>Input</strong>
             </thead>
-            <br /> <br />
+            <br />
+            <br />
             <tbody>
               <tr>
-                <td class="tg-0lax" style="color: yellow">p</td>
-                <td class="tg-0lax">a</td>
-                <td class="tg-0lax">l</td>
-                <td class="tg-0lax">a</td>
-                <td class="tg-0lax">v</td>
-                <td class="tg-0lax">r</td>
-                <td class="tg-0lax">a</td>
+                <td class="tg-0lax" style="color: yellow">a</td>
+                <td class="tg-0lax">b</td>
+                <td class="tg-0lax">c</td>
+                <td class="tg-0lax">d</td>
+                <td class="tg-0lax">e</td>
+                <td class="tg-0lax">f</td>
               </tr>
               <tr>
                 <td class="tg-0lax">^</td>
-                <td class="tg-0lax"></td>
                 <td class="tg-0lax"></td>
                 <td class="tg-0lax"></td>
                 <td class="tg-0lax"></td>
@@ -94,16 +97,43 @@
         </div>
         <div class="item3">
           3
-          <strong>Debug Status</strong><br/>
-          <br />
-          <textarea readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
+          <strong>Tree View</strong>
+          <ul id="myUL">
+            <li>
+              <span class="caret">abcde</span>
+              <ul class="nested">
+                <li>
+                  <span class="caret">abc</span>
+                  <ul class="nested">
+                    <li>a</li>
+                    <li>
+                      <span class="caret">bc</span>
+                      <ul class="nested">
+                        <li>b</li>
+                        <li>c</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>d</li>
+                <li>
+                  <span class="caret">ef</span>
+                  <ul class="nested">
+                    <li>e</li>
+                    <li>f</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
         <div class="item4">
           4
-          <strong>Debug Tree</strong><br/>
-          (todo: tree)
-          <br /> <br />
-          <img src="../arv.jpg" alt="Tree" />
+          <strong>Debug Status</strong><br />
+          <br />
+          <textarea readonly>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea
+          >
         </div>
       </div>
     </main>
@@ -138,6 +168,18 @@
         var y = document.getElementById("iterativeTable").rows[0].cells;
         y[i + 1].setAttribute("style", "color:yellow;");
         y[i].setAttribute("style", "color:green;");
+      }
+
+      var toggler = document.getElementsByClassName("caret");
+      var i;
+
+      for (i = 0; i < toggler.length; i++) {
+        toggler[i].addEventListener("click", function () {
+          this.parentElement
+            .querySelector(".nested")
+            .classList.toggle("active");
+          this.classList.toggle("caret-down");
+        });
       }
     </script>
   </body>
