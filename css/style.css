@@ -214,21 +214,22 @@ nav a:hover {
 }
 
 ul,
-#myUL {
+#treeView {
   list-style-type: none;
 }
 
-#myUL {
+#treeView {
   margin: 0;
   margin-left: 50px;
   padding: 0;
 }
 
+.nested ul {
+  visibility: hidden;
+}
+
 .caret {
   cursor: pointer;
-  -webkit-user-select: none; /* Safari 3.1+ */
-  -moz-user-select: none; /* Firefox 2+ */
-  -ms-user-select: none; /* IE 10+ */
   user-select: none;
 }
 
@@ -240,8 +241,6 @@ ul,
 }
 
 .caret-down::before {
-  -ms-transform: rotate(90deg); /* IE 9 */
-  -webkit-transform: rotate(90deg); /* Safari */
   transform: rotate(90deg);
 }
 

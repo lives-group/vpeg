@@ -76,15 +76,13 @@
             <tbody>
               <tr>
                 <td class="tg-0lax" style="color: yellow">a</td>
-                <td class="tg-0lax">b</td>
-                <td class="tg-0lax">c</td>
-                <td class="tg-0lax">d</td>
-                <td class="tg-0lax">e</td>
-                <td class="tg-0lax">f</td>
+                <td class="tg-0lax">a</td>
+                <td class="tg-0lax">a</td>
+                <td class="tg-0lax">a</td>
+                <td class="tg-0lax">a</td>
               </tr>
               <tr>
                 <td class="tg-0lax">^</td>
-                <td class="tg-0lax"></td>
                 <td class="tg-0lax"></td>
                 <td class="tg-0lax"></td>
                 <td class="tg-0lax"></td>
@@ -98,31 +96,67 @@
         <div class="item3">
           3
           <strong>Tree View</strong>
-          <ul id="myUL">
+          <ul id="treeView">
             <li>
-              <span class="caret">abcde</span>
+              <span class="caret"><strong>A = 'a' A 'a' / lambda</strong> (<strong>aaaaa</strong>)</span>
               <ul class="nested">
+                <li><strong>'a'</strong> (<strong>a</strong>aaaa)</li>
                 <li>
-                  <span class="caret">abc</span>
+                  <span class="caret"
+                    ><strong>A 'a'</strong> (a<strong>aaaa</strong>)</span
+                  >
                   <ul class="nested">
-                    <li>a</li>
+                    <li><strong>'a'</strong> (a<strong>a</strong>aaa)</li>
                     <li>
-                      <span class="caret">bc</span>
+                      <span class="caret"
+                        ><strong>A 'a'</strong> (aa<strong>aaa</strong>)</span
+                      >
                       <ul class="nested">
-                        <li>b</li>
-                        <li>c</li>
+                        <li><strong>'a'</strong> (aa<strong>a</strong>aa)</li>
+                        <li>
+                          <span class="caret"
+                            ><strong>A 'a'</strong>
+                            (aaa<strong>aa</strong>)</span
+                          >
+                          <ul class="nested">
+                            <li>
+                              <strong>'a'</strong> (aaa<strong>a</strong>a)
+                            </li>
+                            <li>
+                              <span class="caret"
+                                ><strong>A 'a'</strong>
+                                (aaaa<strong>a</strong>)</span
+                              >
+                              <ul class="nested">
+                                <li>
+                                  <strong>'a'</strong> (aaaa<strong>a</strong>)
+                                </li>
+                                <li>
+                                  <span class="caret"
+                                    ><strong>A 'a'</strong> (aaaaa<strong
+                                    ></strong>)</span
+                                  >
+                                  <ul class="nested">
+                                    <li>
+                                      <strong>'a'</strong> (erro/vazio<strong
+                                      ></strong>)
+                                    </li>
+                                    <li>sem sequência para analisar ( )</li>
+                                  </ul>
+                                </li>
+                                <li><strong>lambda</strong> ( )</li>
+                              </ul>
+                            </li>
+                            <li><strong>lambda</strong> ( )</li>
+                          </ul>
+                        </li>
+                        <li><strong>lambda</strong> ( )</li>
                       </ul>
                     </li>
+                    <li><strong>lambda</strong> ( )</li>
                   </ul>
                 </li>
-                <li>d</li>
-                <li>
-                  <span class="caret">ef</span>
-                  <ul class="nested">
-                    <li>e</li>
-                    <li>f</li>
-                  </ul>
-                </li>
+                <li><strong>lambda</strong> ( )</li>
               </ul>
             </li>
           </ul>
@@ -138,49 +172,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea
       </div>
     </main>
 
+    <script src="/js/input.js"></script>
+
     <script>
-      function previousStep() {
-        var x = document.getElementById("iterativeTable").rows[1].cells;
-        var y = document.getElementById("iterativeTable").rows[0].cells;
-
-        var i = 0;
-        while (x[i].innerHTML != "^") {
-          i++;
-        }
-        x[i].innerHTML = "";
-        x[i - 1].innerHTML = "^";
-
-        var y = document.getElementById("iterativeTable").rows[0].cells;
-        y[i].setAttribute("style", "color:black;");
-        y[i - 1].setAttribute("style", "color:yellow;");
-      }
-
-      function nextStep() {
-        var x = document.getElementById("iterativeTable").rows[1].cells;
-        var i = 0;
-
-        while (x[i].innerHTML != "^") {
-          i++;
-        }
-        x[i].innerHTML = "";
-        x[i + 1].innerHTML = "^";
-
-        var y = document.getElementById("iterativeTable").rows[0].cells;
-        y[i + 1].setAttribute("style", "color:yellow;");
-        y[i].setAttribute("style", "color:green;");
-      }
-
-      var toggler = document.getElementsByClassName("caret");
+      var treeChild = document.getElementsByClassName("caret");
       var i;
 
-      for (i = 0; i < toggler.length; i++) {
-        toggler[i].addEventListener("click", function () {
-          this.parentElement
-            .querySelector(".nested")
-            .classList.toggle("active");
+      for (i = 0; i < treeChild.length; i++) {
+        treeChild[i].addEventListener("click", function () {
+          this.parentElement.querySelector(".nested").classList.toggle("active");
           this.classList.toggle("caret-down");
         });
       }
     </script>
+
   </body>
 </html>
