@@ -36,12 +36,12 @@
           <strong>Code</strong>
           <br />
           <button>Start</button>
-          <button>Pause</button>
-          <button>Step Over</button>
+          <button onclick="stopDebug()">Stop</button>
+          <button onclick="stepOver(); nextStep(); showTreeChild(); updateStatus()">Step Over</button>
           <button>Step Into</button>
           <button>Step Out</button>
-          <ol id="code">
-            <li>
+          <ol class="code">
+            <li id="firstLine">
               <code><pre>A = 'a' A 'a' / lambda</pre></code>
             </li>
 
@@ -91,15 +91,15 @@
             </tbody>
           </table>
           <button onclick="previousStep()">Previous</button>
-          <button onclick="nextStep()">Next</button>
+          <button onclick="stepOver(); nextStep(); showTreeChild(); updateStatus()">Next</button>
         </div>
         <div class="item3">
           3
           <strong>Tree View</strong>
           <ul id="treeView">
             <li>
-              <span class="caret"><strong>A = 'a' A 'a' / lambda</strong> (<strong>aaaaa</strong>)</span>
-              <ul class="nested">
+              <span class="caret active caret-down"><strong>A = 'a' A 'a' / lambda</strong> (<strong>aaaaa</strong>)</span>
+              <ul class="nested active" style="visibility:visible;">
                 <li><strong>'a'</strong> (<strong>a</strong>aaaa)</li>
                 <li>
                   <span class="caret"
@@ -132,16 +132,16 @@
                                   <strong>'a'</strong> (aaaa<strong>a</strong>)
                                 </li>
                                 <li>
-                                  <span class="caret"
+                                  <span class="caret active caret-down"
                                     ><strong>A 'a'</strong> (aaaaa<strong
                                     ></strong>)</span
                                   >
-                                  <ul class="nested">
-                                    <li>
-                                      <strong>'a'</strong> (erro/vazio<strong
+                                  <ul class="nested active" style="visibility:visible;">
+                                    <li id="error">
+                                      <strong>'a'</strong> (error/void<strong
                                       ></strong>)
                                     </li>
-                                    <li>sem sequência para analisar ( )</li>
+                                    <li id="error">impossible to analyze void</li>
                                   </ul>
                                 </li>
                                 <li><strong>lambda</strong> ( )</li>
@@ -172,14 +172,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea
       </div>
     </main>
 
+    <script src="/js/code.js"></script>
     <script src="/js/input.js"></script>
+    <script src="/js/treeView.js"></script>
+    <script src="/js/status.js"></script>
 
     <script>
-      var treeChild = document.getElementsByClassName("caret");
+      var treeChildren = document.getElementsByClassName("caret");
       var i;
 
-      for (i = 0; i < treeChild.length; i++) {
-        treeChild[i].addEventListener("click", function () {
+      for (i = 0; i < treeChildren.length; i++) {
+        treeChildren[i].addEventListener("click", function () {
           this.parentElement.querySelector(".nested").classList.toggle("active");
           this.classList.toggle("caret-down");
         });
