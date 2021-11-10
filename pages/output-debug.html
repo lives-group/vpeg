@@ -37,129 +37,33 @@
           <br />
           <button>Start</button>
           <button onclick="stopDebug()">Stop</button>
-          <button onclick="stepOver(); nextStep(); showTreeChild(); updateStatus()">Step Over</button>
+          <button onclick="stepOver(); nextStep(); nextTreeStep(); updateStatus()">Step Over</button>
           <button>Step Into</button>
           <button>Step Out</button>
-          <ol class="code">
-            <li id="firstLine">
-              <code><pre>A = 'a' A 'a' / lambda</pre></code>
-            </li>
-
-            <li>
-              <code><pre></pre></code>
-            </li>
-            <li>
-              <code><pre></pre></code>
-            </li>
-            <li>
-              <code><pre></pre></code>
-            </li>
-            <li>
-              <code><pre></pre></code>
-            </li>
-            <li>
-              <code><pre></pre></code>
-            </li>
-            <li>
-              <code><pre></pre></code>
-            </li>
-          </ol>
+          <ol id="code"></ol>
         </div>
         <div class="item2">
           2
-          <table class="tg" id="iterativeTable">
+          <table class="inputTable" id="iterativeTable">
             <thead>
               <strong>Input</strong>
             </thead>
             <br />
             <br />
             <tbody>
-              <tr>
-                <td class="tg-0lax" style="color: yellow">a</td>
-                <td class="tg-0lax">a</td>
-                <td class="tg-0lax">a</td>
-                <td class="tg-0lax">a</td>
-                <td class="tg-0lax">a</td>
-              </tr>
-              <tr>
-                <td class="tg-0lax">^</td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
+              <tr id="inputLine"></tr>
+              <tr id="tagLine">
+                <td class="inputData">^</td>
               </tr>
             </tbody>
           </table>
           <button onclick="previousStep()">Previous</button>
-          <button onclick="stepOver(); nextStep(); showTreeChild(); updateStatus()">Next</button>
+          <button onclick="stepOver();  nextTreeStep(); updateStatus()">Next</button>
         </div>
         <div class="item3">
           3
           <strong>Tree View</strong>
-          <ul id="treeView">
-            <li>
-              <span class="caret active caret-down"><strong>A = 'a' A 'a' / lambda</strong> (<strong>aaaaa</strong>)</span>
-              <ul class="nested active" style="visibility:visible;">
-                <li><strong>'a'</strong> (<strong>a</strong>aaaa)</li>
-                <li>
-                  <span class="caret"
-                    ><strong>A 'a'</strong> (a<strong>aaaa</strong>)</span
-                  >
-                  <ul class="nested">
-                    <li><strong>'a'</strong> (a<strong>a</strong>aaa)</li>
-                    <li>
-                      <span class="caret"
-                        ><strong>A 'a'</strong> (aa<strong>aaa</strong>)</span
-                      >
-                      <ul class="nested">
-                        <li><strong>'a'</strong> (aa<strong>a</strong>aa)</li>
-                        <li>
-                          <span class="caret"
-                            ><strong>A 'a'</strong>
-                            (aaa<strong>aa</strong>)</span
-                          >
-                          <ul class="nested">
-                            <li>
-                              <strong>'a'</strong> (aaa<strong>a</strong>a)
-                            </li>
-                            <li>
-                              <span class="caret"
-                                ><strong>A 'a'</strong>
-                                (aaaa<strong>a</strong>)</span
-                              >
-                              <ul class="nested">
-                                <li>
-                                  <strong>'a'</strong> (aaaa<strong>a</strong>)
-                                </li>
-                                <li>
-                                  <span class="caret active caret-down"
-                                    ><strong>A 'a'</strong> (aaaaa<strong
-                                    ></strong>)</span
-                                  >
-                                  <ul class="nested active" style="visibility:visible;">
-                                    <li id="error">
-                                      <strong>'a'</strong> (error/void<strong
-                                      ></strong>)
-                                    </li>
-                                    <li id="error">impossible to analyze void</li>
-                                  </ul>
-                                </li>
-                                <li><strong>lambda</strong> ( )</li>
-                              </ul>
-                            </li>
-                            <li><strong>lambda</strong> ( )</li>
-                          </ul>
-                        </li>
-                        <li><strong>lambda</strong> ( )</li>
-                      </ul>
-                    </li>
-                    <li><strong>lambda</strong> ( )</li>
-                  </ul>
-                </li>
-                <li><strong>lambda</strong> ( )</li>
-              </ul>
-            </li>
-          </ul>
+          <ul id="treeView"></ul>
         </div>
         <div class="item4">
           4
@@ -172,22 +76,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea
       </div>
     </main>
 
+    <script src="/js/main.js"></script>
     <script src="/js/code.js"></script>
     <script src="/js/input.js"></script>
     <script src="/js/treeView.js"></script>
     <script src="/js/status.js"></script>
-
-    <script>
-      var treeChildren = document.getElementsByClassName("caret");
-      var i;
-
-      for (i = 0; i < treeChildren.length; i++) {
-        treeChildren[i].addEventListener("click", function () {
-          this.parentElement.querySelector(".nested").classList.toggle("active");
-          this.classList.toggle("caret-down");
-        });
-      }
-    </script>
 
   </body>
 </html>

@@ -111,7 +111,7 @@ nav a:hover {
   width: 50%;
 }
 
-.tg {
+.inputTable {
   border-collapse: collapse;
   border: 1px;
   width: 80%;
@@ -120,7 +120,7 @@ nav a:hover {
   margin-right: auto;
 }
 
-.tg td {
+.inputTable td {
   border-color: black;
   border-style: solid;
   border-width: 1px;
@@ -131,7 +131,7 @@ nav a:hover {
   word-break: normal;
 }
 
-.tg th {
+.inputTable th {
   border-color: black;
   border-style: solid;
   border-width: 1px;
@@ -143,7 +143,7 @@ nav a:hover {
   word-break: normal;
 }
 
-.tg .tg-0lax {
+.inputTable .inputData {
   text-align: center;
   vertical-align: center;
   font-weight: bold;
@@ -229,28 +229,24 @@ ul,
   padding: 0;
 }
 
-.nested ul {
-  visibility: hidden;
-}
-
 .caret {
   cursor: pointer;
   user-select: none;
 }
 
 .caret::before {
-  content: "\25B6";
+  content: "\25bb";
   color: black;
   display: inline-block;
   margin-right: 6px;
 }
 
 .caret-down::before {
+  content: "\25bb";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
   transform: rotate(90deg);
-}
-
-.nested {
-  display: none;
 }
 
 .active {
