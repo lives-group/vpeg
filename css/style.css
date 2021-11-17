@@ -189,8 +189,9 @@ nav a:hover {
 
 .grid-container textarea {
   resize: vertical;
-  font-size: 15px;
+  font-size: 13px;
   width: 80%;
+  height: 150px;
 }
 
 .item1 {
@@ -219,14 +220,17 @@ nav a:hover {
 }
 
 ul,
-#treeView {
+#debugView {
   list-style-type: none;
+  
 }
 
-#treeView {
+#debugView {
   margin: 0;
   margin-left: 50px;
   padding: 0;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .caret {
