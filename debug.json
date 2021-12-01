@@ -9,7 +9,8 @@
             "PEG-position": 1,
             "previousPEG": null,
             "actualPEG": "A",
-            "status": "Calling rule A",
+            "depth": [],
+            "status": "[0] Calling rule A",
             "tag": "i"
         },
 
@@ -18,7 +19,8 @@
             "PEG-position": 1,
             "previousPEG": "A",
             "actualPEG": "a A a / lambda",
-            "status": "Rule A called",
+            "depth": ["A"],
+            "status": "[1] Rule A called",
             "tag": "i"
         },
 
@@ -27,7 +29,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a / lambda",
             "actualPEG": "a A a",
-            "status": "Left side of rule A called",
+            "depth": ["A"],
+            "status": "[2] Left side of rule A called",
             "tag": "i"
         },
 
@@ -36,7 +39,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a",
             "actualPEG": "a",
-            "status": "'a' searching a match",
+            "depth": ["A"],
+            "status": "[3] 'a' searching a match",
             "tag": "i"
         },
 
@@ -45,7 +49,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a",
             "actualPEG": "a",
-            "status": "'a' matched!",
+            "depth": ["A"],
+            "status": "[4] 'a' matched!",
             "tag": "s"
         },
 
@@ -54,7 +59,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a",
             "actualPEG": "A",
-            "status": "Calling rule A",
+            "depth": ["A"],
+            "status": "[5] Calling rule A",
             "tag": "i"
         },
 
@@ -63,7 +69,8 @@
             "PEG-position": 1,
             "previousPEG": "A",
             "actualPEG": "a A a / lambda",
-            "status": "Rule A called",
+            "depth": ["A", "A"],
+            "status": "[6] Rule A called",
             "tag": "i"
         },
 
@@ -72,7 +79,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a / lambda",
             "actualPEG": "a A a",
-            "status": "Left side of rule A called",
+            "depth": ["A", "A"],
+            "status": "[7] Left side of rule A called",
             "tag": "i"
         },
 
@@ -81,7 +89,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a",
             "actualPEG": "a",
-            "status": "'a' searching a match",
+            "depth": ["A", "A"],
+            "status": "[8] 'a' searching a match",
             "tag": "i"
         },
 
@@ -90,7 +99,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a",
             "actualPEG": "a",
-            "status": "'a' matched!",
+            "depth": ["A", "A"],
+            "status": "[9] 'a' matched!",
             "tag": "s"
         },
 
@@ -99,7 +109,8 @@
             "PEG-position": 1,
             "previousPEG": "a | A a",
             "actualPEG": "A",
-            "status": "Calling rule A",
+            "depth": ["A", "A"],
+            "status": "[10] Calling rule A",
             "tag": "i"
         },
 
@@ -108,7 +119,8 @@
             "PEG-position": 1,
             "previousPEG": "A",
             "actualPEG": "a A a / lambda",
-            "status": "Rule A called",
+            "depth": ["A", "A", "A"],
+            "status": "[11] Rule A called",
             "tag": "i"
         },
 
@@ -117,7 +129,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a / lambda",
             "actualPEG": "a A a",
-            "status": "Left side of rule A called",
+            "depth": ["A", "A", "A"],
+            "status": "[12] Left side of rule A called",
             "tag": "i"
         },
 
@@ -126,7 +139,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a",
             "actualPEG": "a",
-            "status": "'a' searching a match",
+            "depth": ["A", "A", "A"],
+            "status": "[13] 'a' searching a match",
             "tag": "i"
         },
 
@@ -135,7 +149,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a",
             "actualPEG": "a",
-            "status": "'a' doesn't match. There aren't any char lefting. Failed!",
+            "depth": ["A", "A", "A"],
+            "status": "[14] 'a' doesn't match. There aren't any char lefting. Failed!",
             "tag": "f"
         },
 
@@ -144,7 +159,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a / lambda",
             "actualPEG": "a A a",
-            "status": "Left side of rule A failed",
+            "depth": ["A", "A", "A"],
+            "status": "[15] Left side of rule A failed",
             "tag": "f"
         },
 
@@ -153,7 +169,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a / lambda",
             "actualPEG": "lambda",
-            "status": "Right side of rule A called",
+            "depth": ["A", "A", "A"],
+            "status": "[16] Right side of rule A called",
             "tag": "i"
         },
 
@@ -162,7 +179,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a / lambda",
             "actualPEG": "lambda",
-            "status": "Lambda succeeded",
+            "depth": ["A", "A", "A"],
+            "status": "[17] Lambda succeeded",
             "tag": "s"
         },
 
@@ -171,7 +189,8 @@
             "PEG-position": 1,
             "previousPEG": "A",
             "actualPEG": "a A a / lambda",
-            "status": "Right side of rule A succeeded",
+            "depth": ["A", "A", "A"],
+            "status": "[18] Right side of rule A succeeded",
             "tag": "s"
         },
 
@@ -180,7 +199,8 @@
             "PEG-position": 1,
             "previousPEG": "a | A a",
             "actualPEG": "A",
-            "status": "Rule A succeeded",
+            "depth": ["A", "A"],
+            "status": "[19] Rule A succeeded",
             "tag": "s"
         },
 
@@ -189,7 +209,8 @@
             "PEG-position": 1,
             "previousPEG": "a A | a",
             "actualPEG": "a",
-            "status": "'a' searching a match",
+            "depth": ["A", "A"],
+            "status": "[20] 'a' searching a match",
             "tag": "i"
         },
 
@@ -198,7 +219,8 @@
             "PEG-position": 1,
             "previousPEG": "a A | a",
             "actualPEG": "a",
-            "status": "'a' doesn't match. There aren't any char lefting. Failed!",
+            "depth": ["A", "A"],
+            "status": "[21] 'a' doesn't match. There aren't any char lefting. Failed!",
             "tag": "f"
         },
 
@@ -207,7 +229,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a / lambda",
             "actualPEG": "a A a",
-            "status": "Left side of rule A failed",
+            "depth": ["A", "A"],
+            "status": "[22] Left side of rule A failed",
             "tag": "f"
         },
 
@@ -216,7 +239,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a / lambda",
             "actualPEG": "lambda",
-            "status": "Right side of rule A called",
+            "depth": ["A", "A"],
+            "status": "[23] Right side of rule A called",
             "tag": "i"
         },
 
@@ -225,7 +249,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a / lambda",
             "actualPEG": "lambda",
-            "status": "Right side of rule A succeeded",
+            "depth": ["A", "A"],
+            "status": "[24] Right side of rule A succeeded",
             "tag": "s"
         },
 
@@ -234,7 +259,8 @@
             "PEG-position": 1,
             "previousPEG": "a | A a",
             "actualPEG": "A",
-            "status": "Rule A succeeded",
+            "depth": ["A"],
+            "status": "[25] Rule A succeeded",
             "tag": "s"
         },
 
@@ -243,7 +269,8 @@
             "PEG-position": 1,
             "previousPEG": "a A | a",
             "actualPEG": "a",
-            "status": "'a' searching a match",
+            "depth": ["A"],
+            "status": "[26] 'a' searching a match",
             "tag": "i"
         },
 
@@ -252,7 +279,8 @@
             "PEG-position": 1,
             "previousPEG": "a A | a",
             "actualPEG": "a",
-            "status": "'a' matched!",
+            "depth": ["A"],
+            "status": "[27] 'a' matched!",
             "tag": "s"
         },
 
@@ -261,7 +289,8 @@
             "PEG-position": 1,
             "previousPEG": "a A a / lambda",
             "actualPEG": "a A a",
-            "status": "Left side of rule A succeeded",
+            "depth": ["A"],
+            "status": "[28] Left side of rule A succeeded",
             "tag": "s"
         },
 
@@ -270,7 +299,8 @@
             "PEG-position": 1,
             "previousPEG": "A",
             "actualPEG": "a A a / lambda",
-            "status": "Rule A succeeded",
+            "depth": [],
+            "status": "[29] Rule A succeeded",
             "tag": "s"
         },
 
@@ -279,7 +309,8 @@
             "PEG-position": 1,
             "previousPEG": null,
             "actualPEG": "A",
-            "status": "Input matched! Success",
+            "depth": [],
+            "status": "[30] Input matched! Success",
             "tag": "s"
         }
     ]

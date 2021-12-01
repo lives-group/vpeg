@@ -59,11 +59,19 @@
           <button onclick="previousFrame()">Previous</button>
           <button onclick="stepOver();  nextFrame(); updateStatus()">Next</button>
         </div>
-        <div class="item3">
+        <div class="item3a">
           3
           <strong>Debug View</strong>
           <br /><br />
           <ul id="debugView"></ul>
+        </div>
+        <div class="item3b">
+          <table class="depthTable">
+            <thead>Depth</thead>
+            <tbody id="depthHeap">
+              <tr><td></td></tr>
+            </tbody>
+          </table>
         </div>
         <div class="item4">
           4

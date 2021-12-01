@@ -205,18 +205,63 @@ nav a:hover {
   grid-row-start: 1;
   grid-row-end: 4;
   grid-column-start: 2;
+  grid-column-end: 4;
 }
 
-.item3 {
+.item3a {
   grid-row-start: 5;
   grid-row-end: 8;
   grid-column-start: 2;
+  grid-column-end: 3;
 }
+
+.item3b {
+  grid-row-start: 5;
+  grid-row-end: 8;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+
 
 .item4 {
   grid-row-start: 9;
   grid-row-end: 11;
   grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.depthTable {
+  border-collapse: collapse;
+  border: 1px;
+  width: 40%;
+  table-layout: auto;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 10px;
+}
+
+.depthTable td {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
+
+.depthTable thead {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
 }
 
 ul,

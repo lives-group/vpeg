@@ -6,7 +6,6 @@ function nextFrame() {
 
         if (stepCounter <= data.debugFrames.length) {
             const debugView = document.querySelector("#debugView"); // the debugView element on html
-            const status = document.querySelector("#status");
             const frame = data.debugFrames[stepCounter]; // the step frame from json
 
             console.log(frame);
@@ -79,8 +78,41 @@ function nextFrame() {
                     `;
                 }
             }
+            
+            // input
+            const userInput = data.userInput;
+            const inputLine = document.querySelector("#inputLine");
+            const pointerLine = document.querySelector("#pointerLine");
+            const inputIndex = frame.input;
 
-            status.innerHTML += `> ${frame.status}\n`;
+            for(let i = 0; i < userInput.length; i ++) {
+                const pointerPos = document.querySelector(`#pointer${i}`);
+                console.log(pointerPos);
+
+                if(i === inputIndex) {
+                    pointerPos.innerHTML = `^`;
+                } else {
+                    pointerPos.innerHTML = ``;
+                }
+            }
+
+            // depth
+            const depthHeap = document.querySelector("#depthHeap");
+            depthHeap.innerHTML = `<tr><td></td></tr>`; // clear depth table
+            const depth = frame.depth;
+
+            if(depth.length) {
+                for(let i = depth.length - 1; i >= 0; i--) {
+                    depthHeap.innerHTML += `
+                    <tr><td>${depth[i]}</td></tr>
+                    `;
+                }
+            } 
+
+            // status
+            const status = document.querySelector("#status");
+            status.innerHTML += `${frame.status}\n`;
+
         }
     });
     stepCounter = stepCounter + 1;
@@ -165,6 +197,40 @@ function previousFrame() {
                     `;
                 }
             }
+
+            // input
+            const userInput = data.userInput;
+            const inputLine = document.querySelector("#inputLine");
+            const pointerLine = document.querySelector("#pointerLine");
+            const inputIndex = frame.input;
+
+            for(let i = 0; i < userInput.length; i ++) {
+                const pointerPos = document.querySelector(`#pointer${i}`);
+                console.log(pointerPos);
+
+                if(i === inputIndex) {
+                    pointerPos.innerHTML = `^`;
+                } else {
+                    pointerPos.innerHTML = ``;
+                }
+            }
+
+            // depth
+            const depthHeap = document.querySelector("#depthHeap");
+            depthHeap.innerHTML = `<tr><td></td></tr>`; // clear depth table
+            const depth = frame.depth;
+
+            if(depth.length) {
+                for(let i = depth.length - 1; i >= 0; i--) {
+                    depthHeap.innerHTML += `
+                    <tr><td>${depth[i]}</td></tr>
+                    `;
+                }
+            } 
+
+            // status
+            const status = document.querySelector("#status");
+            status.innerHTML += `${frame.status}\n`;
         }
     });
 }

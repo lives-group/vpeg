@@ -21,7 +21,7 @@ fetch("../debug.json").then(response => response.json()).then(data => {
         }
     }
 
-    // item3: tree view
+    // item3a: tree view
     const debugView = document.querySelector("#debugView"); // the debugView element on html
     const status = document.querySelector("#status");
     const frame = data.debugFrames[0]; // the step frame from json
@@ -31,4 +31,11 @@ fetch("../debug.json").then(response => response.json()).then(data => {
     </li>
     `;
     status.innerHTML += `> ${frame.status}\n`;
+
+    // item3b: depth heap
+    const depthHeap = document.querySelector("#depthHeap");
+    
+    depthHeap.innerHTML = `
+    <tr><td></td></tr>
+    `;
 })
