@@ -99,7 +99,7 @@ function nextFrame() {
             // depth
             const depthHeap = document.querySelector("#depthHeap");
             depthHeap.innerHTML = `<tr><td></td></tr>`; // clear depth table
-            const depth = frame.depth;
+            const depth = frame.callStack;
 
             if(depth.length) {
                 for(let i = depth.length - 1; i >= 0; i--) {
@@ -218,7 +218,7 @@ function previousFrame() {
             // depth
             const depthHeap = document.querySelector("#depthHeap");
             depthHeap.innerHTML = `<tr><td></td></tr>`; // clear depth table
-            const depth = frame.depth;
+            const depth = frame.callStack;
 
             if(depth.length) {
                 for(let i = depth.length - 1; i >= 0; i--) {

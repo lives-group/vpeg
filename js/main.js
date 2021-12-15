@@ -20,6 +20,8 @@ fetch("../debug.json").then(response => response.json()).then(data => {
             pointerLine.innerHTML += `<td class="inputData" id="pointer${i}"></td>`;
         }
     }
+    inputLine.innerHTML += `<td class="inputData""></td>`;
+    pointerLine.innerHTML += `<td class="inputData" id="pointer${input.length}"></td>`;
 
     // item3a: tree view
     const debugView = document.querySelector("#debugView"); // the debugView element on html

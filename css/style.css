@@ -112,15 +112,16 @@ nav a:hover {
 }
 
 .inputTable {
-  border-collapse: collapse;
-  border: 1px;
-  width: 80%;
-  table-layout: auto;
+  
+  border: 1px solid black;
+  width: 50%;
+  border-style: none;
+  table-layout: fixed;
   margin-left: auto;
   margin-right: auto;
 }
 
-.inputTable td {
+#inputLine td {
   border-color: black;
   border-style: solid;
   border-width: 1px;
@@ -129,11 +130,24 @@ nav a:hover {
   overflow: hidden;
   padding: 10px 5px;
   word-break: normal;
+  width: 40px;
+}
+
+#pointerLine td{
+  border-color: black;
+  border-style: none;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+  width: 40px;
 }
 
 .inputTable th {
   border-color: black;
-  border-style: solid;
+  border-style: none;
   border-width: 1px;
   font-family: Arial, sans-serif;
   font-size: 14px;
@@ -151,7 +165,7 @@ nav a:hover {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 50% auto;
+  grid-template-columns: 30% 35% 35%;
   grid-gap: 10px;
   background-color: rgb(255, 255, 255);
   padding: 10px;
@@ -187,61 +201,27 @@ nav a:hover {
   background-color: #9b9b9b;
 }
 
-.grid-container textarea {
+#status {
   resize: vertical;
   font-size: 13px;
   width: 80%;
   height: 150px;
-}
-
-.item1 {
-  grid-row-start: 1;
-  grid-row-end: 11;
-  grid-column-start: 1;
-  grid-column-end: 2;
-}
-
-.item2 {
-  grid-row-start: 1;
-  grid-row-end: 4;
-  grid-column-start: 2;
-  grid-column-end: 4;
-}
-
-.item3a {
-  grid-row-start: 5;
-  grid-row-end: 8;
-  grid-column-start: 2;
-  grid-column-end: 3;
-}
-
-.item3b {
-  grid-row-start: 5;
-  grid-row-end: 8;
-  grid-column-start: 3;
-  grid-column-end: 4;
-}
-
-
-
-.item4 {
-  grid-row-start: 9;
-  grid-row-end: 11;
-  grid-column-start: 2;
-  grid-column-end: 4;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .depthTable {
-  border-collapse: collapse;
   border: 1px;
-  width: 40%;
-  table-layout: auto;
+  width: 55px;
+  height: 10px;
+  table-layout: fixed;
   margin-left: auto;
   margin-right: auto;
   font-size: 10px;
 }
 
 .depthTable td {
+  border-radius: 10px;
   border-color: black;
   border-style: solid;
   border-width: 1px;
@@ -250,6 +230,12 @@ nav a:hover {
   overflow: hidden;
   padding: 10px 5px;
   word-break: normal;
+  height: 6px;
+}
+
+#depthHeap {
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 .depthTable thead {
@@ -262,20 +248,24 @@ nav a:hover {
   overflow: hidden;
   padding: 10px 5px;
   word-break: normal;
+  border-radius: 10px;
 }
 
 ul,
 #debugView {
   list-style-type: none;
-  
 }
 
 #debugView {
+  width: 80%;
   margin: 0;
-  margin-left: 50px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0;
   border: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
+  text-align: center;
+  
 }
 
 .caret {
@@ -303,10 +293,46 @@ ul,
 }
 
 .grid-container ul li {
-  text-align: left;
+  text-align: center;
   font-size: 16px;
 }
 
 #error {
   color: red;
 }
+
+.item1 {
+  grid-row-start: 1;
+  grid-row-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.item2 {
+  grid-row-start: 1;
+  grid-row-end: 4;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.item3a {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.item4 {
+  grid-row-start: 3;
+  grid-row-end: 11;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.item3b {
+  grid-row-start: 4;
+  grid-row-end: 11;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
