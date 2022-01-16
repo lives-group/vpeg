@@ -11,36 +11,28 @@
   </head>
 
   <body>
-    <header class="header">
-      <h1>VPEG</h1>
-      <h2>PEG Visualizator</h2>
-    </header>
-    <nav>
-      <ul>
-        <li><a href="../pages/home.html">Home</a></li>
-        <li><a href="../pages/online-version.html">Online Version</a></li>
-        <li><a href="../pages/documentation.html">Documentation</a></li>
-        <li><a href="../pages/development.html">Development</a></li>
-      </ul>
-    </nav>
-
-    <br />
-    <br />
-    <br />
-    <br />
+    <div class="header">
+      <a href="#default" class="logo">VPEG</a>
+      <div class="header-right">
+        <a href="../pages/home.html">Home</a>
+        <a href="../pages/online-version.html">Online Version</a>
+        <a href="../pages/documentation.html">Documentation</a>
+        <a href="../pages/development.html">Development</a>
+      </div>
+    </div>
 
     <main>
       <div class="grid-container">
         <div class="item1">
-          1
+          <!-- 1 -->
           <strong>Code</strong>
           <br />
-          <button onclick="previousFrame()">Previous</button>
-          <button onclick="stepOver();  nextFrame(); updateStatus()">Next</button>
+          <button class = "button" onclick="previousFrame()">Previous</button>
+          <button class = "button" onclick="stepOver();  nextFrame(); updateStatus()">Next</button>
           <ol id="code"></ol>
         </div>
         <div class="item2">
-          2
+          <!-- 2 -->
           <table class="inputTable" id="iterativeTable">
             <thead>
               <strong>Input</strong>
@@ -53,16 +45,17 @@
               </tr>
             </tbody>
           </table>
-          <button onclick="previousFrame()">Previous</button>
-          <button onclick="stepOver();  nextFrame(); updateStatus()">Next</button>
+          <button class = "button" onclick="previousFrame()">Previous</button>
+          <button class = "button" onclick="stepOver();  nextFrame(); updateStatus()">Next</button>
         </div>
         <div class="item3a">
-          3
+          <!-- 3a -->
           <strong>Debug View</strong>
           <br /><br />
           <ul id="debugView"></ul>
         </div>
         <div class="item3b">
+          <!-- 3b -->
           <table class="depthTable">
             <thead>Depth</thead>
             <tbody id="depthHeap">
@@ -71,7 +64,7 @@
           </table>
         </div>
         <div class="item4">
-          4
+          <!-- 4 -->
           <strong>Debug Status</strong><br />
           <br />
           <textarea id="status" readonly></textarea>
