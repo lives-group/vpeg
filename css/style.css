@@ -1,11 +1,10 @@
-/* Style the header with a grey background and some padding */
+/* Header */
 .header {
   overflow: hidden;
   background-color: #393939;
   padding: 20px 10px;
 }
 
-/* Style the header links */
 .header a {
   float: left;
   color: rgb(233, 233, 233);
@@ -17,29 +16,26 @@
   border-radius: 4px;
 }
 
-/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .header a.logo {
   font-size: 25px;
   font-weight: bold;
 }
 
-/* Change the background color on mouse-over */
 .header a:hover {
   background-color: rgb(74,78,81);
   color: rgb(233, 233, 233);
 }
-
-/* Style the active/current link*/
+  
 .header a.active {
   background-color: dodgerblue;
   color: rgb(252, 252, 252);
 }
 
-/* Float the link section to the right */
 .header-right {
   float: right;
 }
 
+/* Button */
 .button {
   background-color: dodgerblue;
   color: rgb(252, 252, 252);
@@ -68,7 +64,7 @@
 .grid-container div {
   background-color: rgb(49, 49, 49);
   text-align: center;
-  padding: 20px 0;
+  padding: 20px 3px;
   font-size: 30px;
 }
 
@@ -122,8 +118,6 @@
   vertical-align: center;
   font-weight: bold;
 }
-
-
 
 .grid-container ol {
   background-color: rgb(29,27,27);
