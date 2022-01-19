@@ -54,7 +54,7 @@
 /* Lines between divs */
 .grid-container {
   display: grid;
-  grid-template-columns: 30% 35% 33.2%;
+  grid-template-columns: 30% 30% 30% 9%;
   grid-gap: 10px;
   background-color: rgb(45,45,45);
   padding: 10px;
@@ -255,7 +255,7 @@ ul,
 
 .item2 {
   grid-row-start: 1;
-  grid-row-end: 4;
+  grid-row-end: 11;
   grid-column-start: 3;
   grid-column-end: 4;
   color: rgb(233,233,233);
@@ -270,10 +270,10 @@ ul,
 }
 
 .item3b {
-  grid-row-start: 4;
+  grid-row-start: 1;
   grid-row-end: 11;
-  grid-column-start: 3;
-  grid-column-end: 4;
+  grid-column-start: 4;
+  grid-column-end: 5;
   color: rgb(233,233,233);
 }
 
