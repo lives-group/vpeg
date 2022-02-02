@@ -1,3 +1,8 @@
+/* Body */
+body {
+  background-color: rgb(45,45,45);
+}
+
 /* Header */
 .header {
   overflow: hidden;
@@ -47,27 +52,89 @@
   border-radius: 8px;
 }
 
+.button-center {
+  display: flex;
+  justify-content: center;
+}
+
 .button:hover {
   background: rgb(144, 160, 252);
 }
 
+/* Screen */
+.screen {
+  justify-content: center;
+  border-style: solid;
+  border-width: thin;
+  border-color: #393939;
+}
+
+.screen:hover {
+  border-color: #585858;
+}
+
+
 /* Lines between divs */
 .grid-container {
   display: grid;
-  grid-template-columns: 30% 30% 30% 9%;
+  grid-template-columns: 25% 30% 30% 9%;
   grid-gap: 10px;
   background-color: rgb(45,45,45);
   padding: 10px;
+  justify-content: center;
 }
 
-/* divs */
+/* Divs */
 .grid-container div {
-  background-color: rgb(49, 49, 49);
+  background-color: rgb(47, 47, 47);
   text-align: center;
   padding: 20px 3px;
-  font-size: 30px;
+  font-size: 11px;
+  font-family: Arial, sans-serif;
 }
 
+/* Divs position */
+.item1 {
+  grid-row-start: 1;
+  grid-row-end: 21;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  color: rgb(233,233,233);
+}
+
+.item2 {
+  grid-row-start: 1;
+  grid-row-end: 21;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  color: rgb(233,233,233);
+}
+
+.item3 {
+  grid-row-start: 1;
+  grid-row-end: 13;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  color: rgb(233,233,233);
+}
+
+.item4 {
+  grid-row-start: 1;
+  grid-row-end: 21;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  color: rgb(233,233,233);
+}
+
+.item5 {
+  grid-row-start: 13;
+  grid-row-end: 21;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  color: rgb(233,233,233);
+}
+
+/* Input Table */
 .inputTable {
   border: 1px solid rgb(233,233,233);
   width: 50%;
@@ -82,7 +149,7 @@
   border-style: solid;
   border-width: 1px;
   font-family: Arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   overflow: hidden;
   padding: 10px 5px;
   word-break: normal;
@@ -94,7 +161,7 @@
   border-style: none;
   border-width: 1px;
   font-family: Arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   overflow: hidden;
   padding: 10px 5px;
   word-break: normal;
@@ -106,7 +173,7 @@
   border-style: none;
   border-width: 1px;
   font-family: Arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: normal;
   overflow: hidden;
   padding: 10px 5px;
@@ -119,18 +186,23 @@
   font-weight: bold;
 }
 
+#inputLine {
+  background-color: rgb(41, 36, 36);
+}
+
+/* Code */
 .grid-container ol {
   background-color: rgb(29,27,27);
 }
 
 .grid-container ol li {
   text-align: left;
-  font-size: 12px;
+  font-size: 13px;
   color: white;
 }
 
 .grid-container pre {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .grid-container ol li:hover {
@@ -143,17 +215,19 @@
   background-color: #9b9b9b;
 }
 
+/* Debug Status */
 #status {
   resize: vertical;
   font-size: 13px;
   width: 80%;
-  height: 150px;
+  height: 300px;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgb(58, 51, 51);
+  background-color: rgb(41, 36, 36);
   color: white;
 }
 
+/* Depth Heap */
 .depthTable {
   border: 1px;
   width: 55px;
@@ -161,7 +235,7 @@
   table-layout: fixed;
   margin-left: auto;
   margin-right: auto;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .depthTable td {
@@ -170,11 +244,12 @@
   border-style: solid;
   border-width: 1px;
   font-family: Arial, sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   overflow: hidden;
   padding: 10px 5px;
   word-break: normal;
   height: 6px;
+  background-color: rgb(41, 36, 36);
 }
 
 #depthHeap {
@@ -183,11 +258,8 @@
 }
 
 .depthTable thead {
-  border-color: rgb(233,233,233);
-  border-style: solid;
-  border-width: 1px;
   font-family: Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: normal;
   overflow: hidden;
   padding: 10px 5px;
@@ -195,26 +267,40 @@
   border-radius: 10px;
 }
 
-ul,
-#debugView {
+/* Debug View */
+ul, #debugView {
   list-style-type: none;
+  text-align: center;
+  justify-content: center;
 }
 
 #debugView {
   width: 80%;
+  height: 100px;
   margin: 0;
   margin-left: auto;
   margin-right: auto;
   padding: 0;
   border: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  background-color: rgb(41, 36, 36);
   text-align: center;
-  
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.dv-item {
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  justify-content: center;
 }
 
 .caret {
   cursor: pointer;
   user-select: none;
+  text-align: center;
+  justify-content: center;
 }
 
 .caret::before {
@@ -222,6 +308,8 @@ ul,
   color: rgb(233,233,233);
   display: inline-block;
   margin-right: 6px;
+  text-align: center;
+  justify-content: center;
 }
 
 .caret-down::before {
@@ -230,10 +318,14 @@ ul,
   display: inline-block;
   margin-right: 6px;
   transform: rotate(90deg);
+  text-align: center;
+  justify-content: center;
 }
 
 .active {
   display: block;
+  text-align: center;
+  justify-content: center;
 }
 
 .grid-container ul li {
@@ -243,45 +335,5 @@ ul,
 
 #error {
   color: red;
-}
-
-.item1 {
-  grid-row-start: 1;
-  grid-row-end: 11;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  color: rgb(233,233,233);
-}
-
-.item2 {
-  grid-row-start: 1;
-  grid-row-end: 11;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  color: rgb(233,233,233);
-}
-
-.item3a {
-  grid-row-start: 1;
-  grid-row-end: 3;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  color: rgb(233,233,233);
-}
-
-.item3b {
-  grid-row-start: 1;
-  grid-row-end: 11;
-  grid-column-start: 4;
-  grid-column-end: 5;
-  color: rgb(233,233,233);
-}
-
-.item4 {
-  grid-row-start: 3;
-  grid-row-end: 11;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  color: rgb(233,233,233);
 }
 

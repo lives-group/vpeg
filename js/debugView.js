@@ -15,7 +15,7 @@ function nextFrame() {
                 if (frame.tag === "i") {
                     debugView.innerHTML = `
                     <li>
-                        <span class="caret"><strong>${frame.actualPEG}</strong></span>
+                        <span class="caret dv-item"><strong class="dv-item">${frame.actualPEG}</strong></span>
                     </li>
                     `;
                 }
@@ -23,7 +23,7 @@ function nextFrame() {
                 else if (frame.tag === "s") {
                     debugView.innerHTML = `
                     <li>
-                        <span class="caret" style="color:green;"><strong>${frame.actualPEG}</strong></span>
+                        <span class="caret dv-item" style="color:green;"><strong class="dv-item">${frame.actualPEG}</strong></span>
                     </li>
                     `;
                 }
@@ -31,7 +31,7 @@ function nextFrame() {
                 else {
                     debugView.innerHTML = `
                     <li>
-                        <span class="caret" style="color:red;"><strong>${frame.actualPEG}</strong></span>
+                        <span class="caret dv-item" style="color:red;"><strong class="dv-item">${frame.actualPEG}</strong></span>
                     </li>
                     `;
                 }
@@ -42,10 +42,10 @@ function nextFrame() {
                 if (frame.tag === "i") {
                     debugView.innerHTML = `
                     <li>
-                        <span class="caret-down">${frame.previousPEG}</span>
+                        <span class="caret-down dv-item">${frame.previousPEG}</span>
                         <ul class="active">
-                            <li>
-                                <strong>${frame.actualPEG}</strong>
+                            <li class="dv-item">
+                                <strong class="dv-item">${frame.actualPEG}</strong>
                             </li>
                         </ul>
                     </li>
@@ -55,10 +55,10 @@ function nextFrame() {
                 else if (frame.tag === "s") {
                     debugView.innerHTML = `
                     <li>
-                        <span class="caret-down">${frame.previousPEG}</span>
+                        <span class="caret-down dv-item">${frame.previousPEG}</span>
                         <ul class="active">
-                            <li style="color:green;">
-                                <strong>${frame.actualPEG}</strong>
+                            <li class="dv-item" style="color:green;">
+                                <strong class="dv-item">${frame.actualPEG}</strong>
                             </li>
                         </ul>
                     </li>
@@ -68,10 +68,10 @@ function nextFrame() {
                 else {
                     debugView.innerHTML = `
                     <li>
-                        <span class="caret-down">${frame.previousPEG}</span>
+                        <span class="caret-down dv-item">${frame.previousPEG}</span>
                         <ul class="active">
-                            <li style="color:red;">
-                                <strong>${frame.actualPEG}</strong>
+                            <li class="dv-item" style="color:red;">
+                                <strong class="dv-item">${frame.actualPEG}</strong>
                             </li>
                         </ul>
                     </li>
@@ -81,18 +81,22 @@ function nextFrame() {
             
             // input
             const userInput = data.userInput;
-            const inputLine = document.querySelector("#inputLine");
-            const pointerLine = document.querySelector("#pointerLine");
+            const inputLine = document.querySelector("#inputLine").cells;
             const inputIndex = frame.input;
 
-            for(let i = 0; i < userInput.length; i ++) {
+            for(let i = 0; i <= userInput.length; i ++) {
                 const pointerPos = document.querySelector(`#pointer${i}`);
                 console.log(pointerPos);
 
                 if(i === inputIndex) {
                     pointerPos.innerHTML = `^`;
+                    inputLine[i].setAttribute("style", "border-color:orangered;");
+                } else if(i === userInput.length && i === inputIndex) {
+                    pointerPos.innerHTML = `^`;
+                    inputLine[i].setAttribute("style", "border-color:orangered;");
                 } else {
                     pointerPos.innerHTML = ``;
+                    inputLine[i].setAttribute("style", "border-color:rgb(233,233,233);");
                 }
             }
 
@@ -112,6 +116,7 @@ function nextFrame() {
             // status
             const status = document.querySelector("#status");
             status.innerHTML += `${frame.status}\n`;
+            status.scrollTop = status.scrollHeight;
 
         }
     });
@@ -134,7 +139,7 @@ function previousFrame() {
                 if (frame.tag === "i") {
                     debugView.innerHTML = `
                     <li>
-                        <span class="caret"><strong>${frame.actualPEG}</strong></span>
+                        <span class="caret"><strong class="dv-item">${frame.actualPEG}</strong></span>
                     </li>
                     `;
                 }
@@ -142,7 +147,7 @@ function previousFrame() {
                 else if (frame.tag === "s") {
                     debugView.innerHTML = `
                     <li>
-                        <span class="caret" style="color:green;"><strong>${frame.actualPEG}</strong></span>
+                        <span class="caret" style="color:green;"><strong class="dv-item">${frame.actualPEG}</strong></span>
                     </li>
                     `;
                 }
@@ -150,7 +155,7 @@ function previousFrame() {
                 else {
                     debugView.innerHTML = `
                     <li>
-                        <span class="caret" style="color:red;"><strong>${frame.actualPEG}</strong></span>
+                        <span class="caret" style="color:red;"><strong class="dv-item">${frame.actualPEG}</strong></span>
                     </li>
                     `;
                 }
@@ -161,10 +166,10 @@ function previousFrame() {
                 if (frame.tag === "i") {
                     debugView.innerHTML = `
                     <li>
-                        <span class="caret-down">${frame.previousPEG}</span>
+                        <span class="caret-down dv-item">${frame.previousPEG}</span>
                         <ul class="active">
-                            <li>
-                                <strong>${frame.actualPEG}</strong>
+                            <li class="dv-item">
+                                <strong class="dv-item">${frame.actualPEG}</strong>
                             </li>
                         </ul>
                     </li>
@@ -174,10 +179,10 @@ function previousFrame() {
                 else if (frame.tag === "s") {
                     debugView.innerHTML = `
                     <li>
-                        <span class="caret-down">${frame.previousPEG}</span>
+                        <span class="caret-down dv-item">${frame.previousPEG}</span>
                         <ul class="active">
-                            <li style="color:green;">
-                                <strong>${frame.actualPEG}</strong>
+                            <li class="dv-item" style="color:green;">
+                                <strong class="dv-item">${frame.actualPEG}</strong>
                             </li>
                         </ul>
                     </li>
@@ -187,10 +192,10 @@ function previousFrame() {
                 else {
                     debugView.innerHTML = `
                     <li>
-                        <span class="caret-down">${frame.previousPEG}</span>
+                        <span class="caret-down dv-item">${frame.previousPEG}</span>
                         <ul class="active">
-                            <li style="color:red;">
-                                <strong>${frame.actualPEG}</strong>
+                            <li class="dv-item" style="color:red;">
+                                <strong class="dv-item">${frame.actualPEG}</strong>
                             </li>
                         </ul>
                     </li>
@@ -200,8 +205,7 @@ function previousFrame() {
 
             // input
             const userInput = data.userInput;
-            const inputLine = document.querySelector("#inputLine");
-            const pointerLine = document.querySelector("#pointerLine");
+            const inputLine = document.querySelector("#inputLine").cells;
             const inputIndex = frame.input;
 
             for(let i = 0; i < userInput.length; i ++) {
@@ -210,8 +214,13 @@ function previousFrame() {
 
                 if(i === inputIndex) {
                     pointerPos.innerHTML = `^`;
+                    inputLine[i].setAttribute("style", "border-color:orangered;");
+                } else if(i === userInput.length && i === inputIndex) {
+                    pointerPos.innerHTML = `^`;
+                    inputLine[i].setAttribute("style", "border-color:orangered;");
                 } else {
                     pointerPos.innerHTML = ``;
+                    inputLine[i].setAttribute("style", "border-color:rgb(233,233,233);");
                 }
             }
 
@@ -231,6 +240,7 @@ function previousFrame() {
             // status
             const status = document.querySelector("#status");
             status.innerHTML += `${frame.status}\n`;
+            status.scrollTop = status.scrollHeight;
         }
     });
 }
