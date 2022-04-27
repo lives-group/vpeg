@@ -1,6 +1,19 @@
-#lang web-server/insta
-(require web-server/formlets)
+#lang racket/base
+(require web-server/formlets
+         web-server/http
+         web-server/http/response-structs
+         web-server/http/request-structs
+         web-server/servlet-env
+         web-server/servlet
+         racket/list
+         web-server/dispatch
+         web-server/templates
+         racket/string
+         racket/function
+         racket/file
+         xml)
 (require json)
+
 
 
 ; Function to get value from hash given a key
@@ -21,12 +34,8 @@
 
 ;read fcontents as json expr
 (define (read-file-to-json fcontents)
-  (with-input-from-bytes fcontents (λ () (read-json))))
-
-
-; start: request -> doesn't return
-(define (start request)
-  (show-page request))
+  (with-input-from-file fcontents (λ () (read-json))))
+;;antes era with-input-from-byte (só do web-server/insta!!!!
 
 
 ; show-page: request -> doesn't return
@@ -95,8 +104,26 @@
     (div ((style ,style1))
      (a ((style ,(string-append "float:left; font-size:25px; font-weight:bold; line-height:25px;" style2))) "VPeg")
      (div ((style ,(string-append "float:right; font-size:18px; line-height:25px;" style2)))
-      (a ((href "pages/output-debug.html")) "Home ")
+      (a ((href "../pages/output-debug.html")) "Home ")
       (a "Online Version ")
       (a "Documentation ")
       (a "Development")))))
 
+
+
+
+;; Dispatchs
+(define-values (dispatcher url-generator)
+  (dispatch-rules
+   [("") show-page]))
+
+
+;; The entry point
+(module+ main
+  (serve/servlet
+   dispatcher
+   #:port 6995
+   #:command-line? #f
+   ;#:file-not-found-responder not-found
+   #:launch-browser? #f
+   #:servlet-regexp #rx""))

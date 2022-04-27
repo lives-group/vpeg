@@ -1,6 +1,32 @@
-#lang web-server/insta
-(require web-server/formlets)
+#lang racket/base
+(require web-server/formlets
+         web-server/dispatch
+         web-server/servlet-env)
 (require json)
+
+(require (only-in web-server/http
+		  response/full)
+         (only-in web-server/http/request-structs
+		  header?
+		  make-header)
+         (only-in web-server/http/response-structs
+                  response
+                  response?
+                  response-headers)
+         (only-in racket/list
+                  empty?)
+         racket/contract)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; The dispatcher and URL generator
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define-values (dispatcher url-generator)
+  (dispatch-rules
+   [("hello") hello]
+   [("hello" (string-arg)) hello+lang]
+   [("hello") #:method (regexp ".*") not-allowed]))
+
 
 
 ; Function to get value from hash given a key
@@ -45,7 +71,7 @@
          [method "POST"]
          [enctype "multipart/form-data"])
         ,@(formlet-display file-upload-formlet)
-        (input ([type "submit"] [value "Upload"]))))))
+        (input ([type "submit"] [value "Debug"]))))))
 
   (define (upload-handler request)
     (define-values (fname fcontents)
@@ -58,7 +84,7 @@
     (define y (get-property 'y))
     
     (define save-name (string-append "!uploaded-" fname))
-    (current-directory (build-path "C:/Users/guigu/Documents/racket-programs"))
+    (current-directory (build-path "C:/Users/guigu/vpeg/server"))
     (display-to-file fcontents save-name #:exists 'replace)
     (response/xexpr
      `(html
@@ -87,15 +113,29 @@
 
 
 (define style1 "overflow:hidden; background-color:rgb(57, 57, 57); padding:20px 10px;")
+(define style2 "color:white; text-align:center; padding:12px; text-decoration:none; border-radius:4px;")
 
 ; render navigation bar
 (define (render-navigationbar request)
   `(body ((style "background-color:rgb(45, 45, 45);"))
     (div ((style ,style1))
-     (a ((style "float:left; color:white; text-align:center; padding:12px; text-decoration:none; font-size:25px; font-weight:bold; line-height:25px; border-radius:4px;")) "VPeg")
-     (div ((style "float:right; color:white; text-align:center; padding:12px; text-decoration:none; font-size:18px; line-height:25px; border-radius:4px;"))
-      (a "Home ")
+     (a ((style ,(string-append "float:left; font-size:25px; font-weight:bold; line-height:25px;" style2))) "VPeg")
+     (div ((style ,(string-append "float:right; font-size:18px; line-height:25px;" style2)))
+      (a ((href "pages/output-debug.html")) "Home ")
       (a "Online Version ")
       (a "Documentation ")
       (a "Development")))))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; The entry point
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(module+ main
+  (serve/servlet
+   dispatcher
+   #:port 6995
+   #:command-line? #f
+   #:file-not-found-responder not-found
+   #:launch-browser? #f
+   #:servlet-regexp #rx""))
