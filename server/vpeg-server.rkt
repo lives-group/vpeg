@@ -92,6 +92,9 @@
     (title "VPeg")
     (meta ((charset "UTF-8")))
     (meta ((name "viewport") (content "width=device-width, initial-scale=1.0, maximum-scale=1.0")))
+    (link ((rel "stylesheet")
+           (href "style.css")
+           (type "text/css")))
     ,(render-navigationbar request)))
 
 
@@ -104,10 +107,11 @@
     (div ((style ,style1))
      (a ((style ,(string-append "float:left; font-size:25px; font-weight:bold; line-height:25px;" style2))) "VPeg")
      (div ((style ,(string-append "float:right; font-size:18px; line-height:25px;" style2)))
-      (a ((href "../pages/output-debug.html")) "Home ")
+      (a ((href "output-debug.html")) "Home ")
       (a "Online Version ")
       (a "Documentation ")
-      (a "Development")))))
+      (a "Development")))
+    (p "Teste")))
 
 
 
@@ -126,4 +130,9 @@
    #:command-line? #f
    ;#:file-not-found-responder not-found
    #:launch-browser? #f
-   #:servlet-regexp #rx""))
+   #:servlet-regexp #rx""
+    #:extra-files-paths
+    (list
+     (build-path "C:/Users/guigu/vpeg/css")
+     (build-path "C:/Users/guigu/vpeg/js")
+     (build-path "C:/Users/guigu/vpeg/pages"))))
