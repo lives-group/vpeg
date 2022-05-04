@@ -66,7 +66,7 @@
     (define y (get-property 'y))
     
     (define save-name (string-append "!uploaded-" fname))
-    (current-directory (build-path ".."))
+    (current-directory (build-path "C:/Users/guigu/vpeg/server"))
     (display-to-file fcontents save-name #:exists 'replace)
     (response/xexpr
      `(html
@@ -130,7 +130,7 @@
    #:servlet-regexp #rx""
     #:extra-files-paths
     (list
-     (build-path "../css")
-     (build-path "../js")
-     (build-path "../pages")
-     (build-path "../pages/output-debug.html"))))
+     (build-path "../vpeg/css")
+     (build-path "../vpeg/js")
+     (build-path "../vpeg/pages")
+     (build-path "../vpeg/pages/output-debug.html"))))
