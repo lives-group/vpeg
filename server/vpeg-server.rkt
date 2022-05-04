@@ -15,7 +15,6 @@
 (require json)
 
 
-
 ; Function to get value from hash given a key
 (define (get-hash-value k v)
   (hash-ref k v))
@@ -131,6 +130,6 @@
    #:servlet-regexp #rx""
     #:extra-files-paths
     (list
-     (build-path "C:/Users/guigu/vpeg/css")
-     (build-path "C:/Users/guigu/vpeg/js")
+     (build-path "../vpeg/css")
+     (build-path "../vpeg/js")
      (build-path "../vpeg/pages"))))
