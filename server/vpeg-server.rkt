@@ -114,8 +114,6 @@
     (p "Teste")))
 
 
-
-
 ;; Dispatchs
 (define-values (dispatcher url-generator)
   (dispatch-rules
@@ -135,4 +133,4 @@
     (list
      (build-path "C:/Users/guigu/vpeg/css")
      (build-path "C:/Users/guigu/vpeg/js")
-     (build-path "C:/Users/guigu/vpeg/pages"))))
+     (build-path "../vpeg/pages"))))
