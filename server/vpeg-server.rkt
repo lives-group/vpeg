@@ -92,7 +92,7 @@
     (meta ((charset "UTF-8")))
     (meta ((name "viewport") (content "width=device-width, initial-scale=1.0, maximum-scale=1.0")))
     (link ((rel "stylesheet")
-           (href "style.css")
+           (href "https://drive.google.com/uc?export=view&id=1qU-nw8a8eYFQrhWFJNAkjNrdhvNINiHb")
            (type "text/css")))
     ,(render-navigationbar request)))
 
@@ -132,4 +132,5 @@
     (list
      (build-path "../vpeg/css")
      (build-path "../vpeg/js")
-     (build-path "../vpeg/pages"))))
+     (build-path "../vpeg/pages")
+     (build-path "../vpeg/pages/output-debug.html"))))
