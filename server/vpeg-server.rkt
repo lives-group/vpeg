@@ -34,7 +34,6 @@
 ;read fcontents as json expr
 (define (read-file-to-json fcontents)
   (with-input-from-file fcontents (λ () (read-json))))
-;;antes era with-input-from-byte (só do web-server/insta!!!!
 
 
 ; show-page: request -> doesn't return
@@ -85,6 +84,7 @@
     (p (string-append "x: " ,x))
     (p (string-append "y: " ,y))))
 
+
 ; html head
 (define (render-header request)
   `(head
@@ -100,6 +100,7 @@
 (define style1 "overflow:hidden; background-color:rgb(57, 57, 57); padding:20px 10px;")
 (define style2 "color:white; text-align:center; padding:12px; text-decoration:none; border-radius:4px;")
 
+
 ; render navigation bar
 (define (render-navigationbar request)
   `(body ((style "background-color:rgb(45, 45, 45);"))
@@ -113,13 +114,13 @@
     (p "Teste")))
 
 
-;; Dispatchs
+; Dispatchs
 (define-values (dispatcher url-generator)
   (dispatch-rules
    [("") show-page]))
 
 
-;; The entry point
+; The entry point
 (module+ main
   (serve/servlet
    dispatcher
@@ -132,5 +133,4 @@
     (list
      (build-path "../css")
      (build-path "../js")
-     (build-path "../pages")
-     (build-path "../pages/output-debug.html"))))
+     (build-path "../pages"))))
