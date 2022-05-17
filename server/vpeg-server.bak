@@ -34,7 +34,6 @@
 ;read fcontents as json expr
 (define (read-file-to-json fcontents)
   (with-input-from-file fcontents (λ () (read-json))))
-;;antes era with-input-from-byte (só do web-server/insta!!!!
 
 
 ; show-page: request -> doesn't return
@@ -66,7 +65,7 @@
     (define y (get-property 'y))
     
     (define save-name (string-append "!uploaded-" fname))
-    (current-directory (build-path "C:/Users/guigu/vpeg/server"))
+    (current-directory (build-path ".."))
     (display-to-file fcontents save-name #:exists 'replace)
     (response/xexpr
      `(html
@@ -85,6 +84,7 @@
     (p (string-append "x: " ,x))
     (p (string-append "y: " ,y))))
 
+
 ; html head
 (define (render-header request)
   `(head
@@ -92,13 +92,14 @@
     (meta ((charset "UTF-8")))
     (meta ((name "viewport") (content "width=device-width, initial-scale=1.0, maximum-scale=1.0")))
     (link ((rel "stylesheet")
-           (href "https://drive.google.com/uc?export=view&id=1Ba619QRglkgl_IgNZ8ymYL6Wjx02j5kQ")
+           (href "https://drive.google.com/uc?export=view&id=1qU-nw8a8eYFQrhWFJNAkjNrdhvNINiHb")
            (type "text/css")))
     ,(render-navigationbar request)))
 
 
 (define style1 "overflow:hidden; background-color:rgb(57, 57, 57); padding:20px 10px;")
 (define style2 "color:white; text-align:center; padding:12px; text-decoration:none; border-radius:4px;")
+
 
 ; render navigation bar
 (define (render-navigationbar request)
@@ -113,13 +114,13 @@
     (p "Teste")))
 
 
-;; Dispatchs
+; Dispatchs
 (define-values (dispatcher url-generator)
   (dispatch-rules
    [("") show-page]))
 
 
-;; The entry point
+; The entry point
 (module+ main
   (serve/servlet
    dispatcher
@@ -130,7 +131,6 @@
    #:servlet-regexp #rx""
     #:extra-files-paths
     (list
-     (build-path "../vpeg/css")
-     (build-path "../vpeg/js")
-     (build-path "../vpeg/pages")
-     (build-path "../vpeg/pages/output-debug.html"))))
+     (build-path "../css")
+     (build-path "../js")
+     (build-path "../pages"))))

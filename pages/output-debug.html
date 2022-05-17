@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>VPEG</title>
-    <link rel="stylesheet" type="text/css" href="https://drive.google.com/uc?export=view&id=1qU-nw8a8eYFQrhWFJNAkjNrdhvNINiHb" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
@@ -22,10 +22,10 @@
     </div>
 
     <main>
-      <br/>
+      <br />
       <div class="button-center">
-        <button class = "button" onclick="previousFrame()">Previous</button>
-        <button class = "button" onclick="nextFrame();">Next</button>
+        <button class="button" onclick="previousFrame()">Previous</button>
+        <button class="button" onclick="nextFrame();">Next</button>
       </div>
       <br />
       <div class="screen">
@@ -44,8 +44,7 @@
               <br />
               <tbody>
                 <tr id="inputLine"></tr>
-                <tr id="pointerLine">
-                </tr>
+                <tr id="pointerLine"></tr>
               </tbody>
             </table>
           </div>
@@ -56,11 +55,15 @@
           </div>
           <div class="item4">
             <table class="depthTable">
-              <thead>Depth</thead>
+              <thead>
+                Depth
+              </thead>
               <br />
               <br />
               <tbody id="depthHeap">
-                <tr><td></td></tr>
+                <tr>
+                  <td></td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -75,6 +78,5 @@
 
     <script src="../js/main.js"></script>
     <script src="../js/debugView.js"></script>
-
   </body>
 </html>

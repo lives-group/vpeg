@@ -15,11 +15,6 @@
 (require json)
 
 
-; Function to get value from hash given a key
-(define (get-hash-value k v)
-  (hash-ref k v))
-
-
 ; file-upload-formlet: formlet (binding?)
 (define file-upload-formlet
   (formlet
@@ -33,7 +28,8 @@
 
 ;read fcontents as json expr
 (define (read-file-to-json fcontents)
-  (with-input-from-file fcontents (λ () (read-json))))
+  ;(with-input-from-file fcontents (λ () (read-json)))
+  (bytes->jsexpr fcontents))
 
 
 ; show-page: request -> doesn't return
@@ -44,9 +40,9 @@
     (response/xexpr
      `(html 
        ,(render-header request)
-       (p ((style "color:white;")) "Write your PEG")
-       (textarea)
-       (p ((style "color:white;")) "Or upload your PEG")
+       (p ((class "textarea-title")) "Write your PEG")
+       (textarea ((placeholder "Your PEG")))
+       (p ((class "textarea-title")) "Or upload your PEG")
        (form 
         ([action ,(embed/url upload-handler)]
          [method "POST"]
@@ -58,22 +54,32 @@
     (define-values (fname fcontents)
       (formlet-process file-upload-formlet request))
 
-    (define get-property
-      (curry get-hash-value (read-file-to-json fcontents)))
+    (define (get-property p)
+      (hash-ref (bytes->jsexpr fcontents) p))
 
     (define x (get-property 'x))
     (define y (get-property 'y))
     
-    (define save-name (string-append "!uploaded-" fname))
     (current-directory (build-path ".."))
-    (display-to-file fcontents save-name #:exists 'replace)
+    
+    ;(define save-name (string-append "!uploaded-" fname))
+    ;(display-to-file fcontents save-name #:exists 'replace) - não estamos salvando o arquivo
+
     (response/xexpr
      `(html
-       (head (title "VPeg - Execution"))
-       (body (h2 "File name")
-             (p ,fname)
-             (h2 "File content")
-             ,(render-html-json x y)))))
+       (head
+        (title "VPeg - Execution")
+        (meta ((charset "UTF-8")))
+        (meta ((name "viewport") (content "width=device-width, initial-scale=1.0, maximum-scale=1.0")))
+        (link
+         ((rel "stylesheet")
+          (href "style.css")
+          (type "text/css"))))
+       (body
+        (h2 "File name")
+        (p ,fname)
+        (h2 "File content")
+        ,(render-html-json x y)))))
 
   (send/suspend/dispatch response-generator))
 
@@ -92,26 +98,21 @@
     (meta ((charset "UTF-8")))
     (meta ((name "viewport") (content "width=device-width, initial-scale=1.0, maximum-scale=1.0")))
     (link ((rel "stylesheet")
-           (href "https://drive.google.com/uc?export=view&id=1qU-nw8a8eYFQrhWFJNAkjNrdhvNINiHb")
+           (href "style.css")
            (type "text/css")))
     ,(render-navigationbar request)))
 
 
-(define style1 "overflow:hidden; background-color:rgb(57, 57, 57); padding:20px 10px;")
-(define style2 "color:white; text-align:center; padding:12px; text-decoration:none; border-radius:4px;")
-
-
 ; render navigation bar
 (define (render-navigationbar request)
-  `(body ((style "background-color:rgb(45, 45, 45);"))
-    (div ((style ,style1))
-     (a ((style ,(string-append "float:left; font-size:25px; font-weight:bold; line-height:25px;" style2))) "VPeg")
-     (div ((style ,(string-append "float:right; font-size:18px; line-height:25px;" style2)))
+  `(body 
+    (div ((class "header"))
+     (a ((class "logo")) "VPeg")
+     (div ((class "header-right"))
       (a ((href "output-debug.html")) "Home ")
       (a "Online Version ")
       (a "Documentation ")
-      (a "Development")))
-    (p "Teste")))
+      (a "Development")))))
 
 
 ; Dispatchs

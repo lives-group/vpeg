@@ -1,5 +1,8 @@
 p {
-  color: red;
+  color: rgb(252, 252, 252);
+}
+h2 {
+  color: rgb(252, 252, 252);
 }
 
 /* Body */
@@ -77,6 +80,27 @@ body {
   border-color: rgb(88, 88, 88);
 }
 
+
+/* Textarea for PEG */
+.textarea-title {
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: rgb(233,233,233);
+}
+
+textarea {
+  width: 30%;
+  height: 300px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: rgb(58, 51, 51);
+  color: rgb(233,233,233);
+  font-size: 13px;
+  resize: none;
+}
 
 /* Lines between divs */
 .grid-container {
