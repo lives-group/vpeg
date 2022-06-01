@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <title>VPEG</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
@@ -29,7 +30,9 @@
       </div>
       <br />
       <div class="screen">
+        <!--
         <div class="grid-container">
+          
           <div class="item1">
             Code
             <br />
@@ -48,11 +51,13 @@
               </tbody>
             </table>
           </div>
+        
           <div class="item3">
             Debug View
             <br /><br />
             <div id="debugView"><ul></ul></div>
           </div>
+          
           <div class="item4">
             <table class="depthTable">
               <thead>
@@ -71,6 +76,37 @@
             Debug Status<br />
             <br />
             <textarea id="status" readonly></textarea>
+          </div>
+        
+        </div>
+        
+        -->
+
+        <div class="frame-container">
+          <div id="previous-frame">
+            Previous Frame
+            <br /><br />
+            <div id="previousView" class="view"><ul></ul></div>
+            <br /><br />
+          </div>
+
+          <div id="current-frame">
+            Current Frame
+            <br /><br />
+            <div>
+              Input
+              <div id="inputView"></div>
+            </div>
+            <div id="currentView" class="view"><ul></ul></div>
+            <br />
+            <div id="statusView"></div>
+          </div>
+
+          <div id="next-frame">
+            Next Frame
+            <br /><br />
+            <div id="frameView" class="view"><ul></ul></div>
+            <br /><br />
           </div>
         </div>
       </div>

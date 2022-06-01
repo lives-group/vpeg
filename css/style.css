@@ -102,6 +102,80 @@ textarea {
   resize: none;
 }
 
+/* Frames */
+
+.frame-container {
+  display: grid;
+  grid-template-columns: 29% 41% 29%;
+  grid-gap: 10px;
+  background-color: rgb(45,45,45);
+  padding: 10px;
+  justify-content: center;
+}
+
+.frame-container div {
+  text-align: center;
+  font-size: 11px;
+  font-family: Arial, sans-serif;
+}
+
+#current-frame {
+  grid-column-start: 2;
+  color: rgb(233,233,233);
+  border: 1px solid #ddd;
+  background-color: rgb(41, 36, 36);
+  padding: 20px 3px;
+}
+
+#previous-frame {
+  grid-column-start: 1;
+  color: rgb(233,233,233, 0.3);
+  padding: 20px 3px;
+}
+
+#next-frame {
+  grid-column-start: 3;
+  color: rgb(233,233,233, 0.3);
+  padding: 20px 3px;
+}
+
+.view {
+  width: 80%;
+  height: 200px;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+ul, .view {
+  list-style-type: none;
+  text-align: center;
+  justify-content: center;
+}
+
+#inputView {
+  color: rgb(233,233,233);
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  text-align: center;
+  vertical-align: center;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+#statusView {
+  color: rgb(233,233,233);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  text-align: center;
+  vertical-align: center;
+}
+
 /* Lines between divs */
 .grid-container {
   display: grid;
@@ -172,16 +246,19 @@ textarea {
   margin-right: auto;
 }
 
+.inputTable tr {
+  height: 13px;
+}
+
 #inputLine td {
   border-color: rgb(233,233,233);
   border-style: solid;
   border-width: 1px;
   font-family: Arial, sans-serif;
-  font-size: 15px;
+  font-size: 13px;
   overflow: hidden;
-  padding: 10px 5px;
+  padding: 5px;
   word-break: normal;
-  width: 40px;
 }
 
 #pointerLine td{
@@ -212,6 +289,7 @@ textarea {
   text-align: center;
   vertical-align: center;
   font-weight: bold;
+  height: 13px;
 }
 
 #inputLine {
@@ -333,7 +411,7 @@ ul, #debugView {
 
 .caret::before {
   content: "\25bb";
-  color: rgb(233,233,233);
+  /*color: rgb(233,233,233);*/
   display: inline-block;
   margin-right: 6px;
   text-align: center;
@@ -342,7 +420,7 @@ ul, #debugView {
 
 .caret-down::before {
   content: "\25bb";
-  color: rgb(233,233,233);
+  /*color: rgb(233,233,233);*/
   display: inline-block;
   margin-right: 6px;
   transform: rotate(90deg);

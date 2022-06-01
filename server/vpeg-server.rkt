@@ -27,7 +27,7 @@
 
 
 ;read fcontents as json expr
-(define (read-file-to-json fcontents)
+#;(define (read-file-to-json fcontents)
   ;(with-input-from-file fcontents (λ () (read-json)))
   (bytes->jsexpr fcontents))
 
