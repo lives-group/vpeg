@@ -6,6 +6,7 @@
                   "previousPEG":null,
                   "actualPEG":"A",
                   "status":"[1] Calling rule A",
+                  "row": 0,
                   "tag":"i"
                    },
                     
@@ -15,6 +16,7 @@
                   "previousPEG":"A",
                   "actualPEG":"aAa / e",
                   "status":"[2] Executing aAa / e",
+                  "row": 0,
                   "tag":"i"
                    },
                     
@@ -24,6 +26,7 @@
                   "previousPEG":"aAa / e",
                   "actualPEG":"aAa",
                   "status":"[3] Executing aAa",
+                  "row": 1,
                   "tag":"i"
                    },
                     
@@ -33,6 +36,7 @@
                   "previousPEG":"aAa",
                   "actualPEG":"aA",
                   "status":"[4] Executing aA",
+                  "row": 1,
                   "tag":"i"
                    },
                     
@@ -42,6 +46,7 @@
                   "previousPEG":"aA",
                   "actualPEG":"a",
                   "status":"[5] Attempting match a",
+                  "row": 1,
                   "tag":"i"
                    },
                     
@@ -51,6 +56,7 @@
                   "previousPEG":"aA",
                   "actualPEG":"a",
                   "status":"[6] match a succed ",
+                  "row": 1,
                   "tag":"s"
                    },
                     
@@ -60,6 +66,7 @@
                   "previousPEG":"aA",
                   "actualPEG":"A",
                   "status":"[7] Calling rule A",
+                  "row": 1,
                   "tag":"i"
                    },
                     
@@ -69,6 +76,7 @@
                   "previousPEG":"A",
                   "actualPEG":"aAa / e",
                   "status":"[8] Executing aAa / e",
+                  "row": 1,
                   "tag":"i"
                    },
                     
@@ -78,6 +86,7 @@
                   "previousPEG":"aAa / e",
                   "actualPEG":"aAa",
                   "status":"[9] Executing aAa",
+                  "row": 2,
                   "tag":"i"
                    },
                     

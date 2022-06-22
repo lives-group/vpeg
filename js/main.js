@@ -1,7 +1,7 @@
 // read json to html
 fetch("../debug.json").then(response => response.json()).then(data => {
 
-    const frameView = document.querySelector("#frameView");
+    const frameView = document.querySelector("#frameView0");
     const frame = data.debugFrames[0];
 
     frameView.innerHTML = `

@@ -119,7 +119,7 @@ textarea {
   font-family: Arial, sans-serif;
 }
 
-#current-frame {
+.current-frame {
   grid-column-start: 2;
   color: rgb(233,233,233);
   border: 1px solid #ddd;
@@ -127,13 +127,13 @@ textarea {
   padding: 20px 3px;
 }
 
-#previous-frame {
+.previous-frame {
   grid-column-start: 1;
   color: rgb(233,233,233, 0.3);
   padding: 20px 3px;
 }
 
-#next-frame {
+.next-frame {
   grid-column-start: 3;
   color: rgb(233,233,233, 0.3);
   padding: 20px 3px;
@@ -158,7 +158,7 @@ ul, .view {
   justify-content: center;
 }
 
-#inputView {
+.inputView {
   color: rgb(233,233,233);
   font-family: Arial, sans-serif;
   font-size: 13px;
@@ -168,7 +168,7 @@ ul, .view {
   letter-spacing: 3px;
 }
 
-#statusView {
+.statusView {
   color: rgb(233,233,233);
   font-family: Arial, sans-serif;
   font-size: 11px;
@@ -374,27 +374,6 @@ ul, .view {
 }
 
 /* Debug View */
-ul, #debugView {
-  list-style-type: none;
-  text-align: center;
-  justify-content: center;
-}
-
-#debugView {
-  width: 80%;
-  height: 100px;
-  margin: 0;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0;
-  border: 1px solid #ddd;
-  background-color: rgb(41, 36, 36);
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
 .dv-item {
   font-size: 20px;
   font-family: Arial, sans-serif;
