@@ -9,9 +9,59 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
+    <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
+    <script>
+      function init() {
+        var obj = go.GraphObject.make;
+        myDiagram = obj(go.Diagram, "myDiagramDiv");
+
+        // nodes array
+        var nodeDataArray = [
+          { key: "A", color: "lime" },
+          { key: "B", color: "cyan" },
+          { key: "", isGroup: true },
+          { key: "D", color: "pink", group: "" },
+          { key: "G", color: "white", group: "" },
+        ];
+
+        // links array
+        var linkDataArray = [
+          { from: "A", to: "B", color: "red" },
+          { from: "A", to: "", color: "blue" },
+          { from: "D", to: "G", color: "yellow" },
+        ];
+        myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
+        // node template
+        myDiagram.nodeTemplate = obj(
+          go.Node,
+          "Auto",
+          obj(
+            go.Shape,
+            "RoundedRectangle",
+            { fill: "white" },
+            new go.Binding("fill", "color")
+          ),
+          obj(go.TextBlock, "text",
+            new go.Binding("text", "key"))
+        );
+
+        // link template
+        myDiagram.linkTemplate = obj(
+          go.Link,
+          { routing: go.Link.Orthogonal, corner: 5 },
+          obj(go.Shape, { strokeWidth: 2 }, new go.Binding("stroke", "color")),
+          obj(
+            go.Shape,
+            { toArrow: "Standard", stroke: null },
+            new go.Binding("fill", "color")
+          )
+        );
+      }
+    </script>
   </head>
 
-  <body>
+  <body onload="init()">
     <div class="header">
       <a href="#default" class="logo">VPeg</a>
       <div class="header-right">
@@ -24,6 +74,13 @@
 
     <main>
       <br />
+      <!-- The DIV for a Diagram needs an explicit size or else we will not see anything.
+     In this case we also add a background color so we can see that area. -->
+      <div
+        id="myDiagramDiv"
+        style="width: 400px; height: 400px; background-color: #dae4e4"
+      ></div>
+
       <div class="button-center">
         <button class="button" onclick="previousFrame()">Previous</button>
         <button class="button" onclick="nextFrame();">Next</button>
@@ -31,7 +88,6 @@
       <br />
       <div class="screen">
         <div class="frame-container">
-
           <!-- Previous Frame -->
           <div id="previous-frame0" class="previous-frame">
             Previous Frame

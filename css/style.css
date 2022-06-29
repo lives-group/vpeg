@@ -80,29 +80,8 @@ body {
   border-color: rgb(88, 88, 88);
 }
 
-
-/* Textarea for PEG */
-.textarea-title {
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-  color: rgb(233,233,233);
-}
-
-textarea {
-  width: 30%;
-  height: 300px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: rgb(58, 51, 51);
-  color: rgb(233,233,233);
-  font-size: 13px;
-  resize: none;
-}
-
-/* Frames */
+/*
+Frames 
 
 .frame-container {
   display: grid;
@@ -176,204 +155,7 @@ ul, .view {
   vertical-align: center;
 }
 
-/* Lines between divs */
-.grid-container {
-  display: grid;
-  grid-template-columns: 25% 30% 30% 9%;
-  grid-gap: 10px;
-  background-color: rgb(45,45,45);
-  padding: 10px;
-  justify-content: center;
-}
-
-/* Divs */
-.grid-container div {
-  background-color: rgb(47, 47, 47);
-  text-align: center;
-  padding: 20px 3px;
-  font-size: 11px;
-  font-family: Arial, sans-serif;
-}
-
-/* Divs position */
-.item1 {
-  grid-row-start: 1;
-  grid-row-end: 21;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  color: rgb(233,233,233);
-}
-
-.item2 {
-  grid-row-start: 1;
-  grid-row-end: 21;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  color: rgb(233,233,233);
-}
-
-.item3 {
-  grid-row-start: 1;
-  grid-row-end: 13;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  color: rgb(233,233,233);
-}
-
-.item4 {
-  grid-row-start: 1;
-  grid-row-end: 21;
-  grid-column-start: 4;
-  grid-column-end: 5;
-  color: rgb(233,233,233);
-}
-
-.item5 {
-  grid-row-start: 13;
-  grid-row-end: 21;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  color: rgb(233,233,233);
-}
-
-/* Input Table */
-.inputTable {
-  border: 1px solid rgb(233,233,233);
-  width: 50%;
-  border-style: none;
-  table-layout: fixed;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.inputTable tr {
-  height: 13px;
-}
-
-#inputLine td {
-  border-color: rgb(233,233,233);
-  border-style: solid;
-  border-width: 1px;
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  overflow: hidden;
-  padding: 5px;
-  word-break: normal;
-}
-
-#pointerLine td{
-  border-color: rgb(233,233,233);
-  border-style: none;
-  border-width: 1px;
-  font-family: Arial, sans-serif;
-  font-size: 15px;
-  overflow: hidden;
-  padding: 10px 5px;
-  word-break: normal;
-  width: 40px;
-}
-
-.inputTable th {
-  border-color: rgb(233,233,233);
-  border-style: none;
-  border-width: 1px;
-  font-family: Arial, sans-serif;
-  font-size: 15px;
-  font-weight: normal;
-  overflow: hidden;
-  padding: 10px 5px;
-  word-break: normal;
-}
-
-.inputTable .inputData {
-  text-align: center;
-  vertical-align: center;
-  font-weight: bold;
-  height: 13px;
-}
-
-#inputLine {
-  background-color: rgb(41, 36, 36);
-}
-
-/* Code */
-.grid-container ol {
-  background-color: rgb(29,27,27);
-}
-
-.grid-container ol li {
-  text-align: left;
-  font-size: 13px;
-  color: white;
-}
-
-.grid-container pre {
-  font-size: 13px;
-}
-
-.grid-container ol li:hover {
-  color: orangered;
-  background-color: rgb(58, 51, 51);
-}
-
-#firstLine {
-  color: #e5ecf2;
-  background-color: #9b9b9b;
-}
-
-/* Debug Status */
-#status {
-  resize: vertical;
-  font-size: 13px;
-  width: 80%;
-  height: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgb(41, 36, 36);
-  color: white;
-}
-
-/* Depth Heap */
-.depthTable {
-  border: 1px;
-  width: 55px;
-  height: 10px;
-  table-layout: fixed;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 14px;
-}
-
-.depthTable td {
-  border-radius: 10px;
-  border-color: rgb(233,233,233);
-  border-style: solid;
-  border-width: 1px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  overflow: hidden;
-  padding: 10px 5px;
-  word-break: normal;
-  height: 6px;
-  background-color: rgb(41, 36, 36);
-}
-
-#depthHeap {
-  border: 1px solid rgb(233,233,233);
-  border-radius: 10px;
-}
-
-.depthTable thead {
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  font-weight: normal;
-  overflow: hidden;
-  padding: 10px 5px;
-  word-break: normal;
-  border-radius: 10px;
-}
-
-/* Debug View */
+Debug View 
 .dv-item {
   font-size: 20px;
   font-family: Arial, sans-serif;
@@ -390,7 +172,6 @@ ul, .view {
 
 .caret::before {
   content: "\25bb";
-  /*color: rgb(233,233,233);*/
   display: inline-block;
   margin-right: 6px;
   text-align: center;
@@ -399,7 +180,6 @@ ul, .view {
 
 .caret-down::before {
   content: "\25bb";
-  /*color: rgb(233,233,233);*/
   display: inline-block;
   margin-right: 6px;
   transform: rotate(90deg);
@@ -413,12 +193,8 @@ ul, .view {
   justify-content: center;
 }
 
-.grid-container ul li {
-  text-align: center;
-  font-size: 16px;
-}
-
 #error {
   color: red;
 }
 
+*/
