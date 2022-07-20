@@ -1,9 +1,3 @@
-p {
-  color: rgb(252, 252, 252);
-}
-h2 {
-  color: rgb(252, 252, 252);
-}
 
 /* Body */
 body {
@@ -80,6 +74,29 @@ body {
   border-color: rgb(88, 88, 88);
 }
 
+/* D3 tree style */
+.node {
+	cursor: pointer;
+}
+
+.node path {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.node text {
+   fill: #fff;
+  font: 12px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+/* ----------------- */
 /*
 Frames 
 
