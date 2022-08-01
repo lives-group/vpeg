@@ -1,9 +1,5 @@
-
-// can be read from a JSON 
-
-
 // ************** Generate the tree diagram	 *****************
-var margin = { top: 40, right: 120, bottom: 20, left: 120 },
+var margin = { top: 80, right: 120, bottom: 20, left: 120 },
     width = 960 - margin.right - margin.left,
     height = 960 - margin.top - margin.bottom;
 
@@ -25,6 +21,7 @@ var svg = d3
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+// Read from json
 d3.json("../tree.json", function (error, treeData) {
     root = treeData[0];
     root.x0 = 0;
@@ -32,9 +29,6 @@ d3.json("../tree.json", function (error, treeData) {
     update(root);
 });
 
-
-
-//update(root);
 
 d3.select(self.frameElement).style("height", "500px");
 
@@ -53,13 +47,13 @@ function update(source) {
         return d.id || (d.id = ++i);
     });
 
-    // Enter any new nodes at the parent's previous position.
+    // Enter any new nodes at the parent's previous position
     var nodeEnter = node
         .enter()
         .append("g")
         .attr("class", "node")
         .attr("transform", function (d) {
-            return "translate(" + source.x0 + "," + source.y0 + ")";
+            return "translate(" + source.y0 + "," + source.x0 + ")";
         })
         .on("click", click);
 
@@ -72,7 +66,7 @@ function update(source) {
             return d.type;
         })
         .attr("d", d3.svg.symbol()
-            .size(500)
+            .size(800)
             .type(function (d) {
                 return "square";
             })
@@ -80,13 +74,9 @@ function update(source) {
 
     nodeEnter
         .append("text")
-        .attr("x", function (d) {
-            return d.children || d._children ? -13 : 13;
-        })
+        .attr("y", -25)
         .attr("dy", ".35em")
-        .attr("text-anchor", function (d) {
-            return d.children || d._children ? "end" : "start";
-        })
+        .attr("text-anchor", "middle")
         .text(function (d) {
             return d.name;
         })
@@ -122,7 +112,7 @@ function update(source) {
 
     nodeExit.select("text").style("fill-opacity", 1e-6);
 
-    // Update the links…
+    // Update the link
     var link = svg.selectAll("path.link").data(links, function (d) {
         return d.target.id;
     });
@@ -136,7 +126,7 @@ function update(source) {
             return d.target.level;
         })
         .attr("d", function (d) {
-            var o = { x: source.x0, y: source.y0 };
+            var o = { x: source.y0, y: source.x0 };
             return diagonal({ source: o, target: o });
         });
 
@@ -156,8 +146,8 @@ function update(source) {
 
     // Stash the old positions for transition.
     nodes.forEach(function (d) {
-        d.x0 = d.x;
-        d.y0 = d.y;
+        d.x0 = d.y;
+        d.y0 = d.x;
     });
 }
 

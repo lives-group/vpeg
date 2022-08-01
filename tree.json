@@ -1,43 +1,45 @@
 [
   {
-    "name": "Top Level",
+    "name": "aAa / E",
     "parent": "null",
     "type": "green",
     "level": "green",
     "children": [
       {
-        "name": "Level 2: A",
-        "parent": "Top Level",
+        "name": "aAa",
+        "parent": "aAa / E",
         "type": "red",
         "level": "red",
         "children": [
           {
-            "name": "Son of A",
-            "parent": "Level 2: A",
+            "name": "a",
+            "parent": "aAa",
+            "type": "green",
+            "level": "green"
+          },
+          {
+            "name": "Aa",
+            "parent": "aAa",
             "type": "red",
             "level": "red",
             "children": [
               {
-                "name": "Son of son of A",
-                "parent": "Son of A",
+                "name": "A",
+                "parent": "Aa",
                 "type": "red",
                 "level": "red"
               },
               {
-                "name": "Daughter of son of A",
-                "parent": "Son of A"
+                "name": "a",
+                "parent": "Aa"
               }
             ]
-          },
-          {
-            "name": "Daughter of A",
-            "parent": "Level 2: A"
           }
         ]
       },
       {
-        "name": "Level 2: B",
-        "parent": "Top Level",
+        "name": "E",
+        "parent": "aAa / E",
         "type": "green",
         "level": "green"
       }
