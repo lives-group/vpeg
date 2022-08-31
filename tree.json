@@ -1,36 +1,61 @@
 [
   {
+    "id": "0",
     "name": "aAa / E",
     "parent": "null",
     "type": "green",
     "level": "green",
+    "from": 0,
+    "to": 1,
+    "input": "|aa|abba",
+    "input_pos": "0",
     "children": [
       {
+        "id": "1",
         "name": "aAa",
         "parent": "aAa / E",
         "type": "red",
         "level": "red",
-        "children": [
+        "from": 2,
+        "to": 4,
+        "input": "aa|abb|a",
+        "_children": [
           {
+            "id": "2",
             "name": "a",
             "parent": "aAa",
             "type": "green",
+            "from": 2,
+            "to": 3,
+            "input": "aa|ab|ba",
             "level": "green"
           },
           {
+            "id": "3",
             "name": "Aa",
             "parent": "aAa",
             "type": "red",
+            "from": 0,
+            "to": 2,
+            "input": "|aaa|bba",
             "level": "red",
-            "children": [
+            "_children": [
               {
+                "id": "4",
                 "name": "A",
                 "parent": "Aa",
                 "type": "red",
+                "from": 0,
+                "to": 4,
+                "input": "|aaabb|a",
                 "level": "red"
               },
               {
+                "id": "5",
                 "name": "a",
+                "from": 1,
+                "to": 1,
+                "input": "a|a|abba",
                 "parent": "Aa"
               }
             ]
@@ -38,11 +63,18 @@
         ]
       },
       {
+        "id": "6",
         "name": "E",
         "parent": "aAa / E",
         "type": "green",
+        "from": 0,
+        "to": 5,
+        "input": "|aaabba|",
         "level": "green"
       }
     ]
+  },
+  {
+    "input": "aaabguib"
   }
 ]

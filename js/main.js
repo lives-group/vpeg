@@ -1,11 +1,32 @@
-// ************** Generate the tree diagram	 *****************
-var margin = { top: 80, right: 120, bottom: 20, left: 120 },
-    width = 960 - margin.right - margin.left,
-    height = 960 - margin.top - margin.bottom;
+const inputText = "aaabba";
 
-var i = 0,
-    duration = 750,
-    root;
+const inputRow = document.getElementById("input");
+
+inputRow.innerHTML = "";
+for (let i = 0; i < inputText.length; i++) {
+
+    const cell = document.createElement("td");
+    const cellText = document.createTextNode(inputText[i]);
+    cell.appendChild(cellText);
+    inputRow.appendChild(cell);
+    inputRow.cells[i].style.color = "black";
+}
+
+function resetInputColor() {
+    for (let i = 0; i < inputText.length; i++) {
+        inputRow.cells[i].style.color = "black";
+        inputRow.cells[i].style.fontWeight = "normal";
+    }
+}
+
+// ************** Generate the tree diagram	 *****************
+var margin = { top: 80, right: 0, bottom: 0, left: 245 };
+var width = 960 - margin.right - margin.left;
+var height = 960 - margin.top - margin.bottom;
+
+var i = 0;
+var duration = 1000;
+var root;
 
 var tree = d3.layout.tree().size([height, width]);
 
@@ -25,7 +46,8 @@ var svg = d3
 d3.json("../tree.json", function (error, treeData) {
     root = treeData[0];
     root.x0 = 0;
-    root.y0 = width / 2;
+    root.y0 = 0;
+    //document.getElementsByClassName("input")[0].innerHTML += JSON.parse(treeData).input;
     update(root);
 });
 
@@ -34,8 +56,8 @@ d3.select(self.frameElement).style("height", "500px");
 
 function update(source) {
     // Compute the new tree layout.
-    var nodes = tree.nodes(root).reverse(),
-        links = tree.links(nodes);
+    var nodes = tree.nodes(root).reverse();
+    var links = tree.links(nodes);
 
     // Normalize for fixed-depth.
     nodes.forEach(function (d) {
@@ -52,28 +74,29 @@ function update(source) {
         .enter()
         .append("g")
         .attr("class", "node")
+        .attr("id", function (d) {
+            return d.id;
+        })
         .attr("transform", function (d) {
             return "translate(" + source.y0 + "," + source.x0 + ")";
         })
+        .on("mouseover", mouseOver)
+        .on("mouseout", mouseOut)
         .on("click", click);
 
     nodeEnter
-        .append("path")
+        .append("circle")
+        .attr("r", 1e-6)
         .style("fill", function (d) {
-            return d._children ? "grey" : "#fff";
+            return d._children ? d.type : "#fff";
         })
         .style("stroke", function (d) {
             return d.type;
-        })
-        .attr("d", d3.svg.symbol()
-            .size(800)
-            .type(function (d) {
-                return "square";
-            })
-        );
+        });
 
     nodeEnter
         .append("text")
+        .attr("font-size", "12px")
         .attr("y", -25)
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
@@ -91,9 +114,10 @@ function update(source) {
         });
 
     nodeUpdate
-        .select("path")
+        .select("circle")
+        .attr("r", 10)
         .style("fill", function (d) {
-            return d._children ? "grey" : "#fff";
+            return d._children ? d.type * 0.5 : "#fff";
         });
 
     nodeUpdate.select("text").style("fill-opacity", 1);
@@ -104,7 +128,7 @@ function update(source) {
         .transition()
         .duration(duration)
         .attr("transform", function (d) {
-            return "translate(" + source.y + "," + source.x + ")";
+            return "translate(" + source.x + "," + source.y + ")";
         })
         .remove();
 
@@ -162,3 +186,56 @@ function click(d) {
     }
     update(d);
 }
+
+function mouseOver(d) {
+
+    d3.select(this)
+        .select("circle")
+        .attr("r", 13)
+        .style("fill", function (e) {
+            return e.type;
+        })
+        .style("fill-opacity", 0.8);
+    
+        d3.select(this)
+        .select("text")
+        .attr("font-size", "15px")
+        .attr("font-weight", "bold");
+
+    /* var nodes = tree.nodes(root).reverse();
+    svg.selectAll("g.node").data(nodes, function (d) {
+        return d.id;
+    }).select("circle").style("fill", "black"); */
+
+    for (let i = 0; i < inputText.length; i++) {
+        if (i >= d.from && i <= d.to) {
+            inputRow.cells[i].style.color = "orange";
+            inputRow.cells[i].style.fontWeight = "bold";
+        }
+        else {
+            inputRow.cells[i].style.color = "black";
+        }
+    }
+
+}
+
+function mouseOut(d) {
+
+    d3.select(this)
+        .select("circle")
+        .attr("r", 10)
+        .style("fill", function (e) {
+            return e._children ? e.type : "#fff";
+        })
+        .style("fill-opacity", 1);
+    
+    d3.select(this)
+        .select("text")
+        .attr("font-size", "12px")
+        .attr("font-weight", "normal");
+
+    resetInputColor();
+}
+
+
+
