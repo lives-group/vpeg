@@ -1,19 +1,19 @@
 [
   {
     "id": "0",
-    "name": "aAa / E",
+    "name": "S",
     "parent": "null",
     "type": "green",
     "level": "green",
     "from": 0,
-    "to": 1,
+    "to": 0,
     "input": "|aa|abba",
     "input_pos": "0",
     "children": [
       {
         "id": "1",
-        "name": "aAa",
-        "parent": "aAa / E",
+        "name": "Ab",
+        "parent": "S",
         "type": "red",
         "level": "red",
         "from": 2,

@@ -74,6 +74,15 @@ body {
   margin: auto;
 }
 
+.sticky {
+  float: center;
+  text-align: center;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  width: 30%;
+}
+
 /* D3 tree style */
 .node {
   cursor: pointer;
@@ -124,3 +133,4 @@ td {
   height: 100%;
   margin: auto;
 }
+

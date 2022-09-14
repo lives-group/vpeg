@@ -1,4 +1,12 @@
-const inputText = "aaabba";
+// ******* GRAMÁTICA
+/* S -> Ab
+A -> aAa / epsilon */
+
+// aaab -> falha
+// aab -> aceita
+
+//const inputText = "aaab";
+const inputText = "aab";
 
 const inputRow = document.getElementById("input");
 
@@ -38,12 +46,15 @@ var svg = d3
     .select("body")
     .append("svg")
     .attr("width", width + margin.right + margin.left)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", 10000)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // Read from json
-d3.json("../tree.json", function (error, treeData) {
+
+d3.json("../test2.json", function (error, treeData) 
+//d3.json("../test1.json", function (error, treeData) 
+{
     root = treeData[0];
     root.x0 = 0;
     root.y0 = 0;
@@ -52,7 +63,7 @@ d3.json("../tree.json", function (error, treeData) {
 });
 
 
-d3.select(self.frameElement).style("height", "500px");
+d3.select(self.frameElement).style("1000px", "500px");
 
 function update(source) {
     // Compute the new tree layout.
@@ -74,9 +85,6 @@ function update(source) {
         .enter()
         .append("g")
         .attr("class", "node")
-        .attr("id", function (d) {
-            return d.id;
-        })
         .attr("transform", function (d) {
             return "translate(" + source.y0 + "," + source.x0 + ")";
         })
@@ -147,7 +155,7 @@ function update(source) {
         .insert("path", "g")
         .attr("class", "link")
         .style("stroke", function (d) {
-            return d.target.level;
+            return d.target.type;
         })
         .attr("d", function (d) {
             var o = { x: source.y0, y: source.x0 };
@@ -202,13 +210,9 @@ function mouseOver(d) {
         .attr("font-size", "15px")
         .attr("font-weight", "bold");
 
-    /* var nodes = tree.nodes(root).reverse();
-    svg.selectAll("g.node").data(nodes, function (d) {
-        return d.id;
-    }).select("circle").style("fill", "black"); */
-
+    
     for (let i = 0; i < inputText.length; i++) {
-        if (i >= d.from && i <= d.to) {
+        if (i >= d.from && i < d.to && d.from != -1) {
             inputRow.cells[i].style.color = "orange";
             inputRow.cells[i].style.fontWeight = "bold";
         }
@@ -235,6 +239,19 @@ function mouseOut(d) {
         .attr("font-weight", "normal");
 
     resetInputColor();
+}
+
+window.onscroll = function() {fixed()};
+
+var header = document.getElementById("fixed_input");
+var sticky = header.offsetTop;
+
+function fixed() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
 }
 
 

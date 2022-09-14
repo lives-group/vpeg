@@ -1,0 +1,123 @@
+[
+  {
+    "name": "S",
+    "parent": "null",
+    "type": "red",
+    "from": -1,
+    "to": 0,
+    "children": [
+      {
+        "name": "A",
+        "parent": "S",
+        "type": "green",
+        "from": -1,
+        "to": 0,
+        "_children": [
+          {
+            "name": "aAa",
+            "parent": "A",
+            "type": "red",
+            "from": -1,
+            "to": 0,
+            "_children": [
+              {
+                "name": "a",
+                "parent": "aAa",
+                "type": "green",
+                "from": 0,
+                "to": 1
+              },
+              {
+                "name": "Aa",
+                "parent": "aAa",
+                "type": "red",
+                "from": -1,
+                "to": 0,
+                "_children": [
+                  {
+                    "name": "A",
+                    "parent": "Aa",
+                    "type": "green",
+                    "from": -1,
+                    "to": 0,
+                    "_children": [
+                      {
+                        "name": "aAa",
+                        "parent": "A",
+                        "type": "green",
+                        "from": -1,
+                        "to": 0,
+                        "_children": [
+                          {
+                            "name": "a",
+                            "parent": "aAa",
+                            "type": "green",
+                            "from": 1,
+                            "to": 2
+                          },
+                          {
+                            "name": "Aa",
+                            "parent": "aAa",
+                            "type": "green",
+                            "from": -1,
+                            "to": 0,
+                            "_children": [
+                                {
+                                    "name": "A",
+                                    "parent": "Aa",
+                                    "type": "green",
+                                    "from": -1,
+                                    "to": 0,
+                                    "_children": [
+                                        {
+                                            "name": "E",
+                                            "parent": "A",
+                                            "type": "green",
+                                            "from": -1,
+                                            "to": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "a",
+                                    "parent": "Aa",
+                                    "type": "green",
+                                    "from": 2,
+                                    "to": 3
+                                }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "a",
+                    "parent": "Aa",
+                    "type": "red",
+                    "from": 3,
+                    "to": 4
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "E",
+            "parent": "A",
+            "type": "green",
+            "from": -1,
+            "to": 0
+          }
+        ]
+      },
+      {
+        "name": "b",
+        "parent": "S",
+        "type": "red",
+        "from": 0,
+        "to": 1
+      }
+    ]
+  }
+]
