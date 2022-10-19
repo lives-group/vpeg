@@ -1,0 +1,179 @@
+[
+    {
+      "name": "S",
+      "parent": "null",
+      "type": "green",
+      "from": 0,
+      "to": 3,
+      "children": [
+        {
+          "name": "Ab",
+          "parent": "S",
+          "type": "green",
+          "from": 0,
+          "to": 3,
+          "_children": [
+            {
+              "name": "A",
+              "parent": "Ab",
+              "type": "green",
+              "from": 0,
+              "to": 2,
+              "_children": [
+                {
+                  "name": "aAa / \u03bb",
+                  "parent": "A",
+                  "type": "green",
+                  "from": 0,
+                  "to": 2,
+                  "_children": [
+                    {
+                      "name": "aAa",
+                      "parent": "A",
+                      "type": "green",
+                      "from": 0,
+                      "to": 2,
+                      "_children": [
+                        {
+                          "name": "a",
+                          "parent": "aAa",
+                          "type": "green",
+                          "from": 0,
+                          "to": 1
+                        },
+                        {
+                          "name": "Aa",
+                          "parent": "aAa",
+                          "type": "green",
+                          "from": 1,
+                          "to": 2,
+                          "_children": [
+                            {
+                              "name": "A",
+                              "parent": "Aa",
+                              "type": "green",
+                              "from": -1,
+                              "to": 0,
+                              "_children": [
+                                {
+                                  "name": "aAa / \u03bb",
+                                  "parent": "A",
+                                  "type": "green",
+                                  "from": -1,
+                                  "to": 0,
+                                  "_children": [
+                                      {
+                                        "name": "aAa",
+                                        "parent": "A",
+                                        "type": "red",
+                                        "from": -1,
+                                        "to": 0,
+                                        "_children": [
+                                          {
+                                            "name": "a",
+                                            "parent": "aAa",
+                                            "type": "green",
+                                            "from": 1,
+                                            "to": 2
+                                          },
+                                          {
+                                            "name": "Aa",
+                                            "parent": "aAa",
+                                            "type": "red",
+                                            "from": -1,
+                                            "to": 0,
+                                            "_children": [
+                                              {
+                                                "name": "A",
+                                                "parent": "Aa",
+                                                "type": "green",
+                                                "from": -1,
+                                                "to": 0,
+                                                "_children": [
+                                                  {
+                                                    "name": "aAa / \u03bb",
+                                                    "parent": "A",
+                                                    "type": "green",
+                                                    "from": -1,
+                                                    "to": 0,
+                                                    "_children": [
+                                                      {
+                                                        "name": "aAa",
+                                                        "parent": "A",
+                                                        "type": "red",
+                                                        "from": -1,
+                                                        "to": 0,
+                                                        "_children": [
+                                                          {
+                                                            "name": "a",
+                                                            "parent": "aAa",
+                                                            "type": "red",
+                                                            "from": 2,
+                                                            "to": 3
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "name": "\u03bb",
+                                                        "parent": "A",
+                                                        "type": "green",
+                                                        "from": -1,
+                                                        "to": 0
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "name": "a",
+                                                "parent": "aAa",
+                                                "type": "red",
+                                                "from": 2,
+                                                "to": 3
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "name": "\u03bb",
+                                        "parent": "A",
+                                        "type": "green",
+                                        "from": -1,
+                                        "to": 0
+                                      }
+                                  ]
+                                }
+                                
+                              ]
+                            },
+                            {
+                              "name": "a",
+                              "parent": "Aa",
+                              "type": "green",
+                              "from": 1,
+                              "to": 2
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+                
+              ]
+            },
+            {
+              "name": "b",
+              "parent": "Ab",
+              "type": "green",
+              "from": 2,
+              "to": 3
+            }
+          ]
+        }
+        
+      ]
+    }
+  ]
+  

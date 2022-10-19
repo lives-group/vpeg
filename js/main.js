@@ -52,7 +52,7 @@ var svg = d3
 
 // Read from json
 
-d3.json("../test2.json", function (error, treeData) 
+d3.json("../test3.json", function (error, treeData) 
 //d3.json("../test1.json", function (error, treeData) 
 {
     root = treeData[0];
