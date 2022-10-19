@@ -134,3 +134,11 @@ td {
   margin: auto;
 }
 
+/* Racket */
+h2 {
+  color: yellow;
+}
+
+p {
+  color: rgb(52, 255, 29);
+}
