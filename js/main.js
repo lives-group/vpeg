@@ -6,7 +6,21 @@ A -> aAa / epsilon */
 // aab -> aceita
 
 //const inputText = "aaab";
-const inputText = "aab";
+
+/*
+
+Test 4 -
+S <- !! (A !'b') 'a'* B !. ;
+A <- 'a' A 'b' / e ;
+B <- 'b' B 'c' / e ;
+----------------
+S
+----------------
+"abc"
+
+*/
+
+const inputText = "abc";
 
 const inputRow = document.getElementById("input");
 
@@ -52,7 +66,7 @@ var svg = d3
 
 // Read from json
 
-d3.json("../test3.json", function (error, treeData) 
+d3.json("../test4.json", function (error, treeData)
 //d3.json("../test1.json", function (error, treeData) 
 {
     root = treeData[0];
@@ -204,13 +218,13 @@ function mouseOver(d) {
             return e.type;
         })
         .style("fill-opacity", 0.8);
-    
-        d3.select(this)
+
+    d3.select(this)
         .select("text")
         .attr("font-size", "15px")
         .attr("font-weight", "bold");
 
-    
+
     for (let i = 0; i < inputText.length; i++) {
         if (i >= d.from && i < d.to && d.from != -1) {
             inputRow.cells[i].style.color = "orange";
@@ -232,7 +246,7 @@ function mouseOut(d) {
             return e._children ? e.type : "#fff";
         })
         .style("fill-opacity", 1);
-    
+
     d3.select(this)
         .select("text")
         .attr("font-size", "12px")
@@ -241,17 +255,17 @@ function mouseOut(d) {
     resetInputColor();
 }
 
-window.onscroll = function() {fixed()};
+window.onscroll = function () { fixed() };
 
 var header = document.getElementById("fixed_input");
 var sticky = header.offsetTop;
 
 function fixed() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
+    if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+    } else {
+        header.classList.remove("sticky");
+    }
 }
 
 
