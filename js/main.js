@@ -42,7 +42,7 @@ function resetInputColor() {
 }
 
 // ************** Generate the tree diagram	 *****************
-var margin = { top: 80, right: 0, bottom: 0, left: 245 };
+var margin = { top: 80, right: 0, bottom: 0, left: 150 };
 var width = 960 - margin.right - margin.left;
 var height = 960 - margin.top - margin.bottom;
 
@@ -59,11 +59,10 @@ var diagonal = d3.svg.diagonal().projection(function (d) {
 var svg = d3
     .select("body")
     .append("svg")
-    .attr("width", width + margin.right + margin.left)
+    .attr("width", '100%')
     .attr("height", 10000)
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 // Read from json
 
 d3.json("../test4.json", function (error, treeData)
@@ -75,6 +74,16 @@ d3.json("../test4.json", function (error, treeData)
     //document.getElementsByClassName("input")[0].innerHTML += JSON.parse(treeData).input;
     update(root);
 });
+
+// Make the tree responsive to the window size
+d3.select(window).on("resize", resize);
+
+function resize() {
+    var width = parseInt(d3.select("body").style("width"));
+    var height = parseInt(d3.select("body").style("height"));
+    d3.select("svg").attr("width", width).attr("height", height);
+}
+
 
 
 d3.select(self.frameElement).style("1000px", "500px");
