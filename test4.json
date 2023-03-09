@@ -11,14 +11,14 @@
                 "parent": "S",
                 "type": "green",
                 "from": 0,
-                "to": 3,
+                "to": 1,
                 "_children": [
                     {
                         "name": "!!(A!b*)",
                         "parent": "S",
                         "type": "green",
                         "from": 0,
-                        "to": 3,
+                        "to": 2,
                         "_children": [
                             {
                                 "name": "!(A!b*)",

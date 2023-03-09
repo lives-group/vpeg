@@ -88,6 +88,10 @@ body {
   cursor: pointer;
 }
 
+.tree {
+  z-index: 50;
+}
+
 .node circle {
   fill: #fff;
   stroke-width: 3px;
@@ -114,7 +118,6 @@ td,
 th {
   border: 1px solid #ddd;
   text-align: center;
-  background-color: rgb(216, 212, 212);
 }
 
 table {
@@ -129,9 +132,10 @@ td {
 }
 
 .svg {
-  width: 100%;
-  height: 100%;
+  /* width: 80vw;
+  height: 10000;
   margin: auto;
+  overflow: auto; */
 }
 
 /* Racket */
@@ -141,4 +145,42 @@ h2 {
 
 p {
   color: rgb(52, 255, 29);
+}
+
+.letter {
+  color: black;
+  background-color: white;
+  text-align: start;
+  padding: 8px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 10px;
+  width: 30%;
+  margin-right: 20px;
+  z-index: -1;
+  width: 380px;
+  height: 500px;
+}
+
+/* Ao clicar no input, arrumar a borda */
+.letter:focus {
+  outline: none;
+  border: 2px solid dodgerblue;
+}
+
+.header-distance {
+  margin-top: 89px;
+  
+}
+
+.botao {
+  background-color: dodgerblue;
+  color: rgb(252, 252, 252);
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 15px;
+  border-radius: 8px;
 }

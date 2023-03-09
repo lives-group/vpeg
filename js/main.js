@@ -25,24 +25,50 @@ const inputText = "abc";
 const inputRow = document.getElementById("input");
 
 inputRow.innerHTML = "";
+
 for (let i = 0; i < inputText.length; i++) {
 
     const cell = document.createElement("td");
     const cellText = document.createTextNode(inputText[i]);
     cell.appendChild(cellText);
     inputRow.appendChild(cell);
-    inputRow.cells[i].style.color = "black";
+
+    //As células da tabela na verdade estão dentro de um div, então é preciso acessar o pai do pai
+    console.log(inputRow.children[0]);
+
+    inputRow.children[i].style.color = "black";
 }
 
 function resetInputColor() {
     for (let i = 0; i < inputText.length; i++) {
-        inputRow.cells[i].style.color = "black";
-        inputRow.cells[i].style.fontWeight = "normal";
+        inputRow.children[i].style.color = "black";
+        inputRow.children[i].style.fontWeight = "normal";
     }
 }
 
+// // Onchange para, quando o usuário digitar algo, atualizar a tabela
+// function updateInput() {
+//     const inputText = document.getElementById("input").textContent;
+//     // inputRow.innerHTML = "";
+//     const size = inputText.length;
+//     console.log(inputText)
+
+
+//         const cell = document.createElement("td");
+//         const cellText = document.createTextNode(inputText[inputText.length - 1]);
+//         cell.appendChild(cellText);
+//         inputRow.appendChild(cell);
+
+//         //As células da tabela na verdade estão dentro de um div, então é preciso acessar o pai do pai
+
+//         inputRow.children[i].style.color = "black";
+// }
+
+// // Adicionando o listener para o onchange
+// document.getElementById("input").addEventListener("input", updateInput);
+
 // ************** Generate the tree diagram	 *****************
-var margin = { top: 80, right: 0, bottom: 0, left: 150 };
+var margin = { top: 80, right: 0, bottom: 0, left: 250 };
 var width = 960 - margin.right - margin.left;
 var height = 960 - margin.top - margin.bottom;
 
@@ -56,10 +82,18 @@ var diagonal = d3.svg.diagonal().projection(function (d) {
     return [d.x, d.y];
 });
 
+d3.select(window).on("resize", resize);
+
+function resize() {
+    var width = parseInt(d3.select("body").style("width"));
+    var height = parseInt(d3.select("body").style("height"));
+    d3.select("svg").attr("width", width).attr("height", height);
+}
+
 var svg = d3
-    .select("body")
+    .select(".tree")
     .append("svg")
-    .attr("width", '100%')
+    .attr("width", '150vw')
     .attr("height", 10000)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
@@ -236,11 +270,11 @@ function mouseOver(d) {
 
     for (let i = 0; i < inputText.length; i++) {
         if (i >= d.from && i < d.to && d.from != -1) {
-            inputRow.cells[i].style.color = "orange";
-            inputRow.cells[i].style.fontWeight = "bold";
+            inputRow.children[i].style.color = "orange";
+            inputRow.children[i].style.fontWeight = "bold";
         }
         else {
-            inputRow.cells[i].style.color = "black";
+            inputRow.children[i].style.color = "black";
         }
     }
 
@@ -271,9 +305,9 @@ var sticky = header.offsetTop;
 
 function fixed() {
     if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
+        header.classList.remove("header-distance");
     } else {
-        header.classList.remove("sticky");
+        header.classList.add("header-distance");
     }
 }
 

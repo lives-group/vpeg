@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>VPEG</title>
-    <!-- <link rel="stylesheet" type="text/css" href="style.css" /> para rodar no Racket -->
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    
-  </head>
-  <body>
-    <div class="header">
-      <a href="#default" class="logo">VPeg</a>
-      <div class="header-right">
-        <a href="../pages/home.html">Home</a>
-        <a href="../pages/online-version.html">Online Version</a>
-        <a href="../pages/documentation.html">Documentation</a>
-        <a href="../pages/development.html">Development</a>
-      </div>
-    </div>
 
-    <div class="input" id="fixed_input">
-      Input
-      <table>
-        <tbody>
-          <tr id="input">
-            
-          </tr>
-        </tbody>
-      </table>
+<head>
+  <meta charset="UTF-8" />
+  <title>VPEG</title>
+  <!-- <link rel="stylesheet" type="text/css" href="style.css" /> para rodar no Racket -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+
+<body>
+  <div class="header">
+    <a href="#default" class="logo">VPeg</a>
+    <div class="header-right">
+      <a href="../pages/home.html">Home</a>
+      <a href="../pages/online-version.html">Online Version</a>
+      <a href="../pages/documentation.html">Documentation</a>
+      <a href="../pages/development.html">Development</a>
     </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-    <script src="../js/main.js"></script> 
-    
-  </body>
+  </div>
+
+  <div class="input sticky header-distance" id="fixed_input">
+    Input:
+    <table>
+      <tbody>
+        <div contenteditable="true" type="text" id="input" class="letter" value="">
+
+        </div>
+        <button class="botao" type="submit">Change Input</button>
+      </tbody>
+    </table>
+  </div>
+  <div class="tree"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+  <script src="../js/main.js"></script>
+
+</body>
+
 </html>
