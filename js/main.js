@@ -43,29 +43,13 @@ function resetInputColor() {
     for (let i = 0; i < inputText.length; i++) {
         inputRow.children[i].style.color = "black";
         inputRow.children[i].style.fontWeight = "normal";
+
+        // Resetando o underline
+        inputRow.children[i].style.textDecoration = "none";
     }
 }
 
-// // Onchange para, quando o usuário digitar algo, atualizar a tabela
-// function updateInput() {
-//     const inputText = document.getElementById("input").textContent;
-//     // inputRow.innerHTML = "";
-//     const size = inputText.length;
-//     console.log(inputText)
 
-
-//         const cell = document.createElement("td");
-//         const cellText = document.createTextNode(inputText[inputText.length - 1]);
-//         cell.appendChild(cellText);
-//         inputRow.appendChild(cell);
-
-//         //As células da tabela na verdade estão dentro de um div, então é preciso acessar o pai do pai
-
-//         inputRow.children[i].style.color = "black";
-// }
-
-// // Adicionando o listener para o onchange
-// document.getElementById("input").addEventListener("input", updateInput);
 
 // ************** Generate the tree diagram	 *****************
 var margin = { top: 80, right: 0, bottom: 0, left: 250 };
@@ -276,6 +260,11 @@ function mouseOver(d) {
         else {
             inputRow.children[i].style.color = "black";
         }
+    }
+
+    // Underline the "from" position
+    if (d.from != -1) {
+        inputRow.children[d.from].style.textDecoration = "underline";
     }
 
 }
