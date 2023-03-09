@@ -46,6 +46,9 @@ function resetInputColor() {
 
         // Resetando o underline
         inputRow.children[i].style.textDecoration = "none";
+
+        // Resetando o svg
+        document.getElementsByClassName("arrow")[0]?.remove();
     }
 }
 
@@ -262,9 +265,18 @@ function mouseOver(d) {
         }
     }
 
-    // Underline the "from" position
+    // In "from" position, insert the svg arrow above the letter
     if (d.from != -1) {
-        inputRow.children[d.from].style.textDecoration = "underline";
+            var arrow = document.createElement("img");
+            arrow.src = "../assets/arrow.svg";
+            arrow.classList.add("arrow");
+            arrow.style.width = "25px";
+            arrow.style.height = "25px";
+            arrow.style.position = "absolute";
+            arrow.style.top = "80px";
+            arrow.style.left = (inputRow.children[d.from].offsetLeft + 5)  + "px";
+            inputRow.appendChild(arrow);
+        
     }
 
 }
