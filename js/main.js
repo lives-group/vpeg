@@ -273,8 +273,8 @@ function mouseOver(d) {
             arrow.style.width = "25px";
             arrow.style.height = "25px";
             arrow.style.position = "absolute";
-            arrow.style.top = "80px";
-            arrow.style.left = (inputRow.children[d.from].offsetLeft + 5)  + "px";
+            arrow.style.top = "60px";
+            arrow.style.left = (inputRow.children[d.from].offsetLeft - 8)  + "px";
             inputRow.appendChild(arrow);
         
     }
