@@ -7,115 +7,125 @@
         "to": 3,
         "children": [
             {
-                "name": "!!(A!b*)a*B!.",
+                "name": "!!(A!b)a*B!.",
                 "parent": "S",
                 "type": "green",
-                "from": 2,
-                "to": 1,
+                "from": 0,
+                "to": 3,
                 "_children": [
                     {
-                        "name": "!!(A!b*)",
+                        "name": "!!(A!b)",
                         "parent": "S",
                         "type": "green",
-                        "from": 1,
-                        "to": 2,
+                        "from": 0,
+                        "to": null,
                         "_children": [
                             {
-                                "name": "!(A!b*)",
+                                "name": "!(A!b)",
                                 "parent": "S",
                                 "type": "red",
-                                "from": 1,
-                                "to": 3,
+                                "from": 0,
+                                "to": null,
                                 "_children": [
                                     {
-                                        "name": "A!b.",
+                                        "name": "A!b",
                                         "parent": "S",
                                         "type": "green",
                                         "from": 0,
-                                        "to": 3,
+                                        "to": 2,
                                         "_children": [
                                             {
                                                 "name": "A",
                                                 "parent": "S",
                                                 "type": "green",
                                                 "from": 0,
-                                                "to": 3,
+                                                "to": 2,
                                                 "_children": [
                                                     {
-                                                        "name": "aAb",
+                                                        "name": "aAb / e",
                                                         "parent": "S",
                                                         "type": "green",
                                                         "from": 0,
-                                                        "to": 3,
+                                                        "to": 2,
                                                         "_children": [
                                                             {
-                                                                "name": "a",
+                                                                "name": "aAb",
                                                                 "parent": "S",
                                                                 "type": "green",
                                                                 "from": 0,
-                                                                "to": 3,
-                                                                "_children": []
-                                                            },
-                                                            {
-                                                                "name": "Ab",
-                                                                "parent": "S",
-                                                                "type": "green",
-                                                                "from": 0,
-                                                                "to": 3,
+                                                                "to": 2,
                                                                 "_children": [
                                                                     {
-                                                                        "name": "A",
+                                                                        "name": "a",
                                                                         "parent": "S",
                                                                         "type": "green",
                                                                         "from": 0,
-                                                                        "to": 3,
+                                                                        "to": 1,
+                                                                        "_children": []
+                                                                    },
+                                                                    {
+                                                                        "name": "Ab",
+                                                                        "parent": "S",
+                                                                        "type": "green",
+                                                                        "from": 1,
+                                                                        "to": 2,
                                                                         "_children": [
                                                                             {
-                                                                                "name": "aAb",
+                                                                                "name": "A",
                                                                                 "parent": "S",
-                                                                                "type": "red",
-                                                                                "from": 0,
-                                                                                "to": 3,
+                                                                                "type": "green",
+                                                                                "from": 1,
+                                                                                "to": null,
                                                                                 "_children": [
                                                                                     {
-                                                                                        "name": "a",
+                                                                                        "name": "aAb / e",
                                                                                         "parent": "S",
-                                                                                        "type": "red",
-                                                                                        "from": 0,
-                                                                                        "to": 3,
-                                                                                        "_children": []
+                                                                                        "type": "green",
+                                                                                        "from": 1,
+                                                                                        "to": null,
+                                                                                        "_children": [
+                                                                                            {
+                                                                                                "name": "aAb",
+                                                                                                "parent": "S",
+                                                                                                "type": "red",
+                                                                                                "from": 1,
+                                                                                                "to": null,
+                                                                                                "_children": [
+                                                                                                    {
+                                                                                                        "name": "a",
+                                                                                                        "parent": "S",
+                                                                                                        "type": "red",
+                                                                                                        "from": 1,
+                                                                                                        "to": 2,
+                                                                                                        "_children": []
+                                                                                                    }
+                                                                                                ]
+                                                                                            },
+                                                                                            {
+                                                                                                "name": "e",
+                                                                                                "parent": "S",
+                                                                                                "type": "green",
+                                                                                                "from": 1,
+                                                                                                "to": null,
+                                                                                                "_children": []
+                                                                                            }
+                                                                                        ]
                                                                                     }
                                                                                 ]
                                                                             },
                                                                             {
-                                                                                "name": "e",
+                                                                                "name": "b",
                                                                                 "parent": "S",
                                                                                 "type": "green",
-                                                                                "from": 0,
-                                                                                "to": 3,
+                                                                                "from": 1,
+                                                                                "to": 2,
                                                                                 "_children": []
                                                                             }
                                                                         ]
-                                                                    },
-                                                                    {
-                                                                        "name": "b",
-                                                                        "parent": "S",
-                                                                        "type": "green",
-                                                                        "from": 0,
-                                                                        "to": 3,
-                                                                        "_children": []
                                                                     }
                                                                 ]
                                                             }
                                                         ]
-                                                    },
-                                                    {
-                                                        "name": "e",
-                                                        "parent": "S",
-                                                        "type": "green",
-                                                        "from": 0,
-                                                        "to": 3,
-                                                        "_children": []
                                                     }
                                                 ]
                                             },
@@ -123,8 +133,8 @@
                                                 "name": "!b",
                                                 "parent": "S",
                                                 "type": "green",
-                                                "from": 0,
-                                                "to": 3,
+                                                "from": 2,
+                                                "to": null,
                                                 "_children": [
                                                     {
                                                         "name": "b",
@@ -154,7 +164,7 @@
                                 "parent": "S",
                                 "type": "green",
                                 "from": 0,
-                                "to": 3,
+                                "to": 1,
                                 "_children": [
                                     {
                                         "name": "a",
@@ -170,65 +180,65 @@
                                 "name": "B!.",
                                 "parent": "S",
                                 "type": "green",
-                                "from": 0,
+                                "from": 1,
                                 "to": 3,
                                 "_children": [
                                     {
                                         "name": "B",
                                         "parent": "S",
                                         "type": "green",
-                                        "from": 0,
+                                        "from": 1,
                                         "to": 3,
                                         "_children": [
                                             {
-                                                "name": "bBc",
+                                                "name": "bBc / e",
                                                 "parent": "S",
                                                 "type": "green",
-                                                "from": 0,
+                                                "from": 1,
                                                 "to": 3,
                                                 "_children": [
                                                     {
                                                         "name": "bBc",
                                                         "parent": "S",
-                                                        "type": "red",
-                                                        "from": 0,
+                                                        "type": "green",
+                                                        "from": 1,
                                                         "to": 3,
                                                         "_children": [
                                                             {
                                                                 "name": "b",
                                                                 "parent": "S",
-                                                                "type": "red",
-                                                                "from": 0,
-                                                                "to": 3,
+                                                                "type": "green",
+                                                                "from": 1,
+                                                                "to": 2,
                                                                 "_children": []
                                                             },
                                                             {
                                                                 "name": "Bc",
                                                                 "parent": "S",
                                                                 "type": "green",
-                                                                "from": 0,
+                                                                "from": 2,
                                                                 "to": 3,
                                                                 "_children": [
                                                                     {
                                                                         "name": "B",
                                                                         "parent": "S",
                                                                         "type": "green",
-                                                                        "from": 0,
-                                                                        "to": 3,
+                                                                        "from": 2,
+                                                                        "to": null,
                                                                         "_children": [
                                                                             {
                                                                                 "name": "bBc",
                                                                                 "parent": "S",
-                                                                                "type": "green",
-                                                                                "from": 0,
-                                                                                "to": 3,
+                                                                                "type": "red",
+                                                                                "from": 2,
+                                                                                "to": null,
                                                                                 "_children": [
                                                                                     {
                                                                                         "name": "b",
                                                                                         "parent": "S",
                                                                                         "type": "red",
-                                                                                        "from": 0,
-                                                                                        "to": 3,
+                                                                                        "from": 2,
+                                                                                        "to": null,
                                                                                         "_children": []
                                                                                     }
                                                                                 ]
@@ -237,8 +247,8 @@
                                                                                 "name": "e",
                                                                                 "parent": "S",
                                                                                 "type": "green",
-                                                                                "from": 0,
-                                                                                "to": 3,
+                                                                                "from": 2,
+                                                                                "to": 2,
                                                                                 "_children": []
                                                                             }
                                                                         ]
@@ -247,7 +257,7 @@
                                                                         "name": "c",
                                                                         "parent": "S",
                                                                         "type": "green",
-                                                                        "from": 0,
+                                                                        "from": 2,
                                                                         "to": 3,
                                                                         "_children": []
                                                                     }
@@ -256,14 +266,6 @@
                                                         ]
                                                     }
                                                 ]
-                                            },
-                                            {
-                                                "name": "e",
-                                                "parent": "S",
-                                                "type": "green",
-                                                "from": 0,
-                                                "to": 3,
-                                                "_children": []
                                             }
                                         ]
                                     },
@@ -271,15 +273,15 @@
                                         "name": "!.",
                                         "parent": "S",
                                         "type": "green",
-                                        "from": 0,
-                                        "to": 3,
+                                        "from": 1,
+                                        "to": null,
                                         "_children": [
                                             {
                                                 "name": ".",
                                                 "parent": "S",
                                                 "type": "red",
-                                                "from": 0,
-                                                "to": 3,
+                                                "from": 1,
+                                                "to": null,
                                                 "_children": []
                                             }
                                         ]

@@ -34,7 +34,6 @@ for (let i = 0; i < inputText.length; i++) {
     inputRow.appendChild(cell);
 
     //As células da tabela na verdade estão dentro de um div, então é preciso acessar o pai do pai
-    console.log(inputRow.children[0]);
 
     inputRow.children[i].style.color = "black";
 }
@@ -229,6 +228,7 @@ function update(source) {
 
 // Toggle children on click.
 function click(d) {
+    resetInputColor();
     if (d.children) {
         d._children = d.children;
         d.children = null;
@@ -312,5 +312,59 @@ function fixed() {
     }
 }
 
+function skip() {
+    const input = document.getElementById("num-levels");
+    const numLevels = parseInt(input.value);
+
+    if (numLevels > 0) {
+        expandFromLastOpenLevel(numLevels);
+        // update(root);
+    }
+
+    
+}
+
+function expandFromLastOpenLevel(levelsToExpand) {
+    node = root;
+    let lastOpenLevel = findLastOpenLevel(node, 0);
+    expandLevelsFromLastOpen(node, lastOpenLevel + levelsToExpand, 0);
+    update(node);
+}
+
+function findLastOpenLevel(node, currentLevel) {
+    // Achar o último nível aberto (com children e não _children)
+    let lastOpenLevel = currentLevel;
+
+    if (node._children) {
+        return lastOpenLevel;
+
+    } else if (node.children) {
+        node.children.forEach(function (child) {
+            let lastOpenLevelChild = findLastOpenLevel(child, currentLevel + 1);
+            if (lastOpenLevelChild > lastOpenLevel) {
+                lastOpenLevel = lastOpenLevelChild;
+            }
+        });
+    }
+
+    return lastOpenLevel;
+}
+
+
+function expandLevelsFromLastOpen(node, targetLevel, currentLevel) {
+
+    if (currentLevel >= targetLevel) return;
+
+    if (node._children) {
+        node.children = node._children;
+        node._children = null;
+    }
+
+    if (node.children) {
+        node.children.forEach(function (child) {
+            expandLevelsFromLastOpen(child, targetLevel, currentLevel + 1);
+        });
+    }
+}
 
 
