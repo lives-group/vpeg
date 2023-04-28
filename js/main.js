@@ -367,4 +367,34 @@ function expandLevelsFromLastOpen(node, targetLevel, currentLevel) {
     }
 }
 
+function back() {
+    const input = document.getElementById("num-levels");
+    const numLevels = parseInt(input.value);
+
+    if (numLevels > 0) {
+        collapseFromLastOpenLevel(numLevels);
+    }
+}
+
+function collapseFromLastOpenLevel(levelsToCollapse) {
+    node = root;
+    let lastOpenLevel = findLastOpenLevel(node, 0);
+    collapseLevelsFromLastOpen(node, lastOpenLevel - levelsToCollapse, 0);
+    update(node);
+}
+
+function collapseLevelsFromLastOpen(node, targetLevel, currentLevel) {
+    if (currentLevel >= targetLevel) {
+        if (node.children) {
+            node._children = node.children;
+            node.children = null;
+        }
+    } else if (node.children) {
+        node.children.forEach(function (child) {
+            collapseLevelsFromLastOpen(child, targetLevel, currentLevel + 1);
+        });
+    }
+}
+
+
 
