@@ -6,8 +6,35 @@ body {
 /* Header */
 .header {
   overflow: hidden;
+  width: 100%;
   background-color: rgb(57, 57, 57);
   padding: 20px 10px;
+}
+
+.container {
+  display: flex;
+  /* height: 100vh; */
+}
+
+.table-container-spacer {
+  width: 30%; /* mesma largura que .table-container */
+  float: left; /* para ocupar o espaço à esquerda */
+}
+
+
+.table-container {
+  /* position: fixed; */
+  width: 30%;
+  box-sizing: border-box;
+  padding: 10px;
+  display: inline-block;
+  /* background-color: #fff; para visualizar a área da tabela */
+}
+
+.tree {
+  width: 70%;
+  box-sizing: border-box;
+  display: inline-block;
 }
 
 .header a {
@@ -171,16 +198,43 @@ p {
 
 .header-distance {
   margin-top: 89px;
-  
 }
 
 .botao {
+  margin-top: 10px;
   background-color: dodgerblue;
   color: rgb(252, 252, 252);
   border: none;
   padding: 10px;
   text-align: center;
   text-decoration: none;
-  margin-top: 15px;
+  /* margin-top: 15px; */
   border-radius: 8px;
+  pointer-events: all;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#skip-button {
+  border: none;
+}
+
+.rule {
+  margin-top: -80px;
+}
+
+.rule-content {
+  background-color: white;
+  height: 100%;
+  border-radius: 8px;
+
+}
+
+.rule-content p {
+  color: black;
+  font-weight: bold;
 }

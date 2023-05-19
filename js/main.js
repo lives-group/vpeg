@@ -273,7 +273,7 @@ function mouseOver(d) {
             arrow.style.width = "25px";
             arrow.style.height = "25px";
             arrow.style.position = "absolute";
-            arrow.style.top = "60px";
+            arrow.style.top = (inputRow.children[d.from].offsetTop + 20) + "px";
             arrow.style.left = (inputRow.children[d.from].offsetLeft - 8)  + "px";
             inputRow.appendChild(arrow);
         
@@ -397,4 +397,27 @@ function collapseLevelsFromLastOpen(node, targetLevel, currentLevel) {
 }
 
 
+// Obtém o elemento .table-container
+const tableContainer = document.querySelector('.table-container');
 
+// Armazena os valores de scroll inicial
+let initialScrollX = tableContainer.scrollLeft;
+let initialScrollY = tableContainer.scrollTop;
+
+// Adiciona um ouvinte de evento de rolagem ao .table-container
+tableContainer.addEventListener('scroll', function() {
+  // Calcula a diferença de scroll em relação ao valor inicial
+  const deltaX = tableContainer.scrollLeft - initialScrollX;
+  const deltaY = tableContainer.scrollTop - initialScrollY;
+
+  // Ajusta a margem esquerda do .table-container de acordo com o scroll na direção x
+  const currentMarginLeft = parseInt(getComputedStyle(tableContainer).marginLeft, 10) || 0;
+  tableContainer.style.marginLeft = `${currentMarginLeft + deltaX}px`;
+
+  // Ajusta o scroll vertical do body de acordo com o scroll na direção y
+  window.scrollBy(0, deltaY);
+
+  // Atualiza os valores de scroll inicial
+  initialScrollX = tableContainer.scrollLeft;
+  initialScrollY = tableContainer.scrollTop;
+});

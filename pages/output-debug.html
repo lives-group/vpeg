@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -15,27 +14,39 @@
     <a href="#default" class="logo">VPeg</a>
     <div class="header-right">
       <a href="../pages/home.html">Home</a>
-      <a href="../pages/online-version.html">Online Version</a>
-      <a href="../pages/documentation.html">Documentation</a>
-      <a href="../pages/development.html">Development</a>
     </div>
   </div>
-
-  <div class="input sticky header-distance" id="fixed_input">
-    Input:
-    <table>
-      <tbody>
-        <div contenteditable="true" type="text" id="input" class="letter" value="">
-
+  <div class="container">
+    <div class="table-container-spacer"></div>
+    <div class="table-container input" id="fixed_input">
+      <div class="rule">
+        <div class="rule-name">Grammar:</div>
+        <div class="rule-content">
+          <p>S <- !! (A !'b') 'a' * B !. ;</p>
+              <p>A <- 'a' A 'b' / e ;</p>
+                  <p>B <- 'b' B 'c' / e ;</p>
         </div>
-        <button class="botao" type="submit">Change Input</button>
-        <button id="skip-button" onclick="skip()">Skip</button>
-        <input type="number" id="num-levels" name="num-levels" min="1" max="10" value="1">
-        <button id="back-button" onclick="back()">Back</button>
-      </tbody>
-    </table>
+      </div>
+      Input:
+      <table>
+        <tbody>
+          <div contenteditable="true" type="text" id="input" class="letter" value="">
+
+          </div>
+          <div class="button-container">
+            <div>
+              <button id="skip-button" onclick="skip()">Skip</button>
+              <input type="number" id="num-levels" name="num-levels" min="1" max="10" value="1">
+              <button id="back-button" onclick="back()">Back</button>
+            </div>
+            <button class="botao" type="button">Change Input</button>
+          </div>
+        </tbody>
+      </table>
+    </div>
+    <div class="tree"></div>
   </div>
-  <div class="tree"></div>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
   <script src="../js/main.js"></script>
