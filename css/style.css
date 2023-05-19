@@ -23,7 +23,7 @@ body {
 
 
 .table-container {
-  /* position: fixed; */
+  position: fixed;
   width: 30%;
   box-sizing: border-box;
   padding: 10px;
@@ -187,7 +187,7 @@ p {
   margin-right: 20px;
   z-index: -1;
   width: 360px;
-  height: 500px;
+  height: 300px;
 }
 
 /* Ao clicar no input, arrumar a borda */
