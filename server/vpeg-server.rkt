@@ -54,11 +54,8 @@
     (define-values (fname fcontents)
       (formlet-process file-upload-formlet request))
 
-    (define (get-property p)
-      (hash-ref (bytes->jsexpr fcontents) p))
-
-    (define x (get-property 'x))
-    (define y (get-property 'y))
+    (define file-contents-string 
+      (bytes->string/utf-8 fcontents))
     
     (current-directory (build-path ".."))
     
@@ -79,7 +76,7 @@
         (h2 "File name")
         (p ,fname)
         (h2 "File content")
-        ,(render-html-json x y)))))
+        (p ,file-contents-string)))))
 
   (send/suspend/dispatch response-generator))
 
