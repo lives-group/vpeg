@@ -1,6 +1,6 @@
 // Generated from Calculator.g4 by ANTLR 4.13.0
 // jshint ignore: start
-import antlr4 from 'antlr4';
+import antlr4 from '../antlr4/index.web.js';
 
 // This class defines a complete listener for a parse tree produced by CalculatorParser.
 export default class CalculatorListener extends antlr4.tree.ParseTreeListener {

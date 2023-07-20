@@ -7,3 +7,4 @@
 .#*.scm
 
 node_modules/
+antlr4/

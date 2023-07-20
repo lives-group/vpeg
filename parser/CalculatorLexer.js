@@ -1,6 +1,6 @@
 // Generated from Calculator.g4 by ANTLR 4.13.0
 // jshint ignore: start
-import antlr4 from 'antlr4';
+import antlr4 from '../antlr4/index.web.js';
 
 
 const serializedATN = [4,0,11,59,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,

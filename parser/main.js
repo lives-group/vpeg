@@ -1,16 +1,50 @@
-import * as antlr4 from 'antlr4';
+import * as antlr4 from '../antlr4/index.web.js';
 import CalculatorLexer from './CalculatorLexer.js';
 import CalculatorParser from './CalculatorParser.js';
 
-const input = "3  2 * (9 - 2)\n";
-const chars = new antlr4.InputStream(input);
-const lexer = new CalculatorLexer(chars);
-const tokens = new antlr4.CommonTokenStream(lexer);
-const parser = new CalculatorParser(tokens);
-parser.buildParseTrees = true;
-const tree = parser.prog();
+const input = document.getElementById('input');
+const error = document.getElementById('error');
 
-// Verifica a quantidade de erros
-parser.syntaxErrorsCount 
+class CustomErrorListener extends antlr4.ErrorListener {
+    constructor() {
+        super();
+        this.errorMessage = '';
+        this.errorColumn = -1;
+    }
 
-console.log(tree.toStringTree(parser.ruleNames));
+    syntaxError(recognizer, offendingSymbol, line, column, msg, e) {
+        this.errorMessage = `Linha ${line}:${column} - ${msg}`;
+        this.errorColumn = column;
+    }
+}
+
+function verifyGrammar() {
+    let text = input.textContent;
+    const chars = new antlr4.InputStream(text + "\n"); 
+    const lexer = new CalculatorLexer(chars);
+    const tokens = new antlr4.CommonTokenStream(lexer);
+    const parser = new CalculatorParser(tokens);
+    parser.buildParseTrees = true;
+
+    const errorListener = new CustomErrorListener();
+    parser.removeErrorListeners(); // Remove os ouvintes de erro padrão
+    parser.addErrorListener(errorListener); // Anexa nosso ouvinte de erro personalizado
+
+    const tree = parser.prog();
+
+    if (parser.syntaxErrorsCount > 0) {
+        error.textContent = errorListener.errorMessage;
+
+        const errorCharIndex = errorListener.errorColumn;
+        const beforeError = text.slice(0, errorCharIndex);
+        const errorChar = text.charAt(errorCharIndex);
+        const afterError = text.slice(errorCharIndex + 1);
+        const html = `${beforeError}<span class="error">${errorChar}</span>${afterError}`;
+
+        input.innerHTML = html;
+    } else {
+        error.textContent = '';
+    }
+}
+
+input.addEventListener('input', verifyGrammar);
