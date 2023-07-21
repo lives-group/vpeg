@@ -35,7 +35,7 @@ class CustomErrorListener extends antlr4.ErrorListener {
     }
 
     syntaxError(recognizer, offendingSymbol, line, column, msg, e) {
-        this.errorMessage = `Linha ${line}:${column} - ${msg}`;
+        this.errorMessage = `Line ${line}:${column} - ${msg}`;
         this.errorColumn = column;
     }
 }
