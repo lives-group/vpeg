@@ -47,6 +47,12 @@ body {
   line-height: 25px;
   border-radius: 4px;
 }
+.error {
+  background-color: red;
+  color: white;
+  min-width: 1ch;
+  display: inline-block;
+}
 
 .header a.logo {
   font-size: 25px;

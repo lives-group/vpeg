@@ -5,6 +5,28 @@ import CalculatorParser from './CalculatorParser.js';
 const input = document.getElementById('input');
 const error = document.getElementById('error');
 
+function setCursorToEnd(contentEditableElement)
+{
+    let range,selection;
+    if(document.createRange)
+    {
+        range = document.createRange();
+        range.selectNodeContents(contentEditableElement);
+        range.collapse(false);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+    else if(document.selection)
+    { 
+        range = document.body.createTextRange();
+        range.moveToElementText(contentEditableElement);
+        range.collapse(false);
+        range.select();
+    }
+}
+
+
 class CustomErrorListener extends antlr4.ErrorListener {
     constructor() {
         super();
@@ -39,9 +61,11 @@ function verifyGrammar() {
         const beforeError = text.slice(0, errorCharIndex);
         const errorChar = text.charAt(errorCharIndex);
         const afterError = text.slice(errorCharIndex + 1);
+
         const html = `${beforeError}<span class="error">${errorChar}</span>${afterError}`;
 
         input.innerHTML = html;
+        setCursorToEnd(input);
     } else {
         error.textContent = '';
     }
