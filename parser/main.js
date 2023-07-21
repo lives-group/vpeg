@@ -1,6 +1,6 @@
 import * as antlr4 from '../antlr4/index.web.js';
-import CalculatorLexer from './CalculatorLexer.js';
-import CalculatorParser from './CalculatorParser.js';
+import PEGLexer from './PEGLexer.js';
+import PEGParser from './PEGParser.js';
 
 const input = document.getElementById('input');
 const error = document.getElementById('error');
@@ -43,16 +43,16 @@ class CustomErrorListener extends antlr4.ErrorListener {
 function verifyGrammar() {
     let text = input.textContent;
     const chars = new antlr4.InputStream(text + "\n"); 
-    const lexer = new CalculatorLexer(chars);
+    const lexer = new PEGLexer(chars);
     const tokens = new antlr4.CommonTokenStream(lexer);
-    const parser = new CalculatorParser(tokens);
+    const parser = new PEGParser(tokens);
     parser.buildParseTrees = true;
-
+    
     const errorListener = new CustomErrorListener();
     parser.removeErrorListeners(); // Remove os ouvintes de erro padrão
     parser.addErrorListener(errorListener); // Anexa nosso ouvinte de erro personalizado
 
-    const tree = parser.prog();
+    const tree = parser.rules();
 
     if (parser.syntaxErrorsCount > 0) {
         error.textContent = errorListener.errorMessage;
