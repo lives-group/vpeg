@@ -40,11 +40,14 @@ for (let i = 0; i < inputText.length; i++) {
 
 function resetInputColor() {
     for (let i = 0; i < inputText.length; i++) {
-        inputRow.children[i].style.color = "black";
-        inputRow.children[i].style.fontWeight = "normal";
+        if (inputRow.children[i]?.style.color) {
+            inputRow.children[i].style.color = "black";
+            inputRow.children[i].style.fontWeight = "normal";
+            // Resetando o underline
+            inputRow.children[i].style.textDecoration = "none";
+          }
+          
 
-        // Resetando o underline
-        inputRow.children[i].style.textDecoration = "none";
 
         // Resetando o svg
         document.getElementsByClassName("arrow")[0]?.remove();
@@ -261,7 +264,8 @@ function mouseOver(d) {
             inputRow.children[i].style.fontWeight = "bold";
         }
         else {
-            inputRow.children[i].style.color = "black";
+            if(inputRow.children[i]?.style.color)
+                inputRow.children[i].style.color = "black";
         }
     }
 

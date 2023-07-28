@@ -68,6 +68,10 @@ function verifyGrammar() {
         setCursorToEnd(input);
     } else {
         error.textContent = '';
+
+        const html = text.replace(/<span class="error">/g, '').replace(/<\/span>/g, '');
+        input.innerHTML = html;
+        setCursorToEnd(input);
     }
 }
 
