@@ -1,4 +1,4 @@
-grammar PEG;
+grammar Peg;
 
 /***
  * Grammar Rule Section
@@ -8,21 +8,21 @@ rules:
    production+
 ;
 
-// A definition of an APEG rule
+// A definition of an Peg rule
 production:
-   ID ':' peg_expr ';'
+  ID ':' peg_expr ';'
 ;
 
 /***
- * PEG Expressions
+ * Peg Expressions
  ***/
 
-// Definition of the right side of a PEG
+// Definition of the right side of a Peg
 // This rule defines that the CHOICE operator has the lowest precedence 
 // The precedence of CHOICE operator is 1
 // CHOICE is an associative operator. We decided for right association because it may be faster to interpret
 peg_expr:
-  peg_seq '/' e=peg_expr
+  peg_seq '/' peg_expr
  |
   peg_seq
 ;
@@ -30,33 +30,33 @@ peg_expr:
 // This rule defines a sequence operator: e1 e2 
 // The precedence of sequence operator is 2
 peg_seq: 
-   peg_unary_op
-   peg_unary_op+
+   peg_prefix peg_prefix+
+  |
+   peg_prefix
+;
+
+// &e (And-predicate with precedence 3)
+// !e (Not-predicate with precedence 3)
+peg_prefix:
+  '&' peg_unary_op
+  |
+   '!' peg_unary_op
   |
    peg_unary_op
-  |
-   '\u03bb' // LAMBDA parsing expression
 ;
 
 
-// This rule defines the operators with precedence 4 and 3  
-// e? (Optional with precedence 4
+// e? (Optional with precedence 4)
 // e* (Zero-or-more with precedence 4)
 // e+ (One-or-more with precedence 4)
-// &e (And-predicate with precedence 3)
-// !e (Not-predicate with precedence 3)
 peg_unary_op:
    peg_factor '?'
   | 
    peg_factor '*'
   | 
-   peg_factor '+'
+   peg_factor '+' 
   |
-   peg_factor
-  |
-   '&' peg_factor
-  |
-   '!' peg_factor 
+   peg_factor 
 ;
 
 // This rule defines the other operators and basic expressions
@@ -75,16 +75,18 @@ peg_factor:
   |
    '_' 
   |
-   '(' peg_expr ')'
+   '(' peg_expr ')' 
+  |
+   '\u03bb' // LAMBDA parsing expression
 ;
 
 ntcall:
-  ID 
+   ID
 ;
 
-range: 
-  RANGE_LITERAL
+range: RANGE_LITERAL
 ;
+
 
 /*************************************************
  ***************** Lexical *************************
@@ -119,7 +121,16 @@ fragment XDIGIT :
   ;
 fragment LETTER : 'a'..'z' | 'A'..'Z';
 fragment DIGIT : '0'..'9';
+TRUE : 'true';
+FALSE : 'false';
 ID : LETTER (LETTER | DIGIT | '_')*;
+INT_NUMBER : DIGIT+;
+REAL_NUMBER :
+  DIGIT+ ('.' DIGIT*)? EXPONENT?
+  |
+  '.' DIGIT+ EXPONENT?
+  ;
+fragment EXPONENT : ('e'|'E') ('+'|'-')? DIGIT+ ;
 
 /*
  * Comments and whitespaces

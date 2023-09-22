@@ -1,4 +1,4 @@
-import * as antlr4 from '../antlr4/index.web.js';
+import * as antlr4 from './antlr4/index.web.js';
 import PEGLexer from './PEGLexer.js';
 import PEGParser from './PEGParser.js';
 
@@ -40,6 +40,24 @@ class CustomErrorListener extends antlr4.ErrorListener {
     }
 }
 
+class Visitor {
+    visitChildren(ctx) {
+      if (!ctx) {
+        return;
+      }
+  
+      if (ctx.children) {
+        return ctx.children.map(child => {
+          if (child.children && child.children.length != 0) {
+            return child.accept(this);
+          } else {
+            return child.getText();
+          }
+        });
+      }
+    }
+}
+
 function verifyGrammar() {
     let text = input.textContent;
     const chars = new antlr4.InputStream(text + "\n"); 
@@ -53,6 +71,7 @@ function verifyGrammar() {
     parser.addErrorListener(errorListener); // Anexa nosso ouvinte de erro personalizado
 
     const tree = parser.rules();
+    
 
     if (parser.syntaxErrorsCount > 0) {
         error.textContent = errorListener.errorMessage;
@@ -72,7 +91,28 @@ function verifyGrammar() {
         const html = text.replace(/<span class="error">/g, '').replace(/<\/span>/g, '');
         input.innerHTML = html;
         setCursorToEnd(input);
+        console.log(parseTreeToJson(tree));
     }
+}
+
+function parseTreeToJson(tree) {
+    const ruleName = PEGParser.ruleNames[tree.ruleIndex];
+    const result = { rule: ruleName };
+    tree.accept(new Visitor());
+
+    if (tree.children) {
+        result.children = tree.children.map(child => parseTreeToJson(child));
+    } else {
+        if (tree.symbol) {
+            result.value = tree.symbol.text;
+        }
+    }
+
+    if (result.rule === 'peg_expr' || result.rule === 'peg_unary_op' || result.rule === 'peg_factor') {
+        return result.children[0];
+    }
+
+    return result;
 }
 
 input.addEventListener('input', verifyGrammar);

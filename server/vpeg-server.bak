@@ -56,12 +56,6 @@
 
     (define file-contents-string 
       (bytes->string/utf-8 fcontents))
-
-    (define (get-property p)
-      (hash-ref (bytes->jsexpr fcontents) p))
-
-    (define x (get-property 'x))
-    (define y (get-property 'y))
     
     (current-directory (build-path ".."))
     

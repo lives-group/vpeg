@@ -35,20 +35,22 @@
 ; show-page: request -> doesn't return
 (define (show-page request)
   
-  ; Response generator
   (define (response-generator embed/url)
-    (response/xexpr
-     `(html 
-       ,(render-header request)
-       (p ((class "textarea-title")) "Write your PEG")
-       (textarea ((placeholder "Your PEG")))
-       (p ((class "textarea-title")) "Or upload your PEG")
-       (form 
-        ([action ,(embed/url upload-handler)]
-         [method "POST"]
-         [enctype "multipart/form-data"])
-        ,@(formlet-display file-upload-formlet)
-        (input ([type "submit"] [value "Debug"]))))))
+  (response/xexpr
+   `(html 
+     ,(render-header request)
+     (p ((class "textarea-title")) "Write your PEG")
+     (div ((contenteditable "true") (type "text") (id "input") (class "letter") (value "")))
+     (p ((class "textarea-title")) "Or upload your PEG")
+     (form 
+      ([action ,(embed/url upload-handler)]
+       [method "POST"]
+       [enctype "multipart/form-data"])
+      ,@(formlet-display file-upload-formlet)
+      (input ([type "submit"] [value "Debug"])))
+     (p ((id "error"))))))
+
+
 
   (define (upload-handler request)
     (define-values (fname fcontents)
@@ -97,7 +99,8 @@
     (link ((rel "stylesheet")
            (href "style.css")
            (type "text/css")))
-    ,(render-navigationbar request)))
+    ,(render-navigationbar request)
+    (script ((src "main.js") (type "module")))))
 
 
 ; render navigation bar
@@ -130,5 +133,6 @@
     #:extra-files-paths
     (list
      (build-path "../css")
-     (build-path "../js")
+     (build-path "../antlr4")
+     (build-path "../parser")
      (build-path "../pages"))))
